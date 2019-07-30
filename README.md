@@ -1,6 +1,6 @@
 # flutter_bd
 
-A new Flutter application.
+A new Flutter application for bd_tools.
 
 ## Getting Started
 
