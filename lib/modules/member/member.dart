@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bd/tools/singleton.dart';
 
-class memberPage extends StatefulWidget {
-  memberPage({Key key}) : super(key: key);
+class MemberPage extends StatefulWidget {
+  MemberPage({Key key}) : super(key: key);
 
-  _memberPageState createState() => _memberPageState();
+  _MemberPageState createState() => _MemberPageState();
 }
 
-class _memberPageState extends State<memberPage> {
+class _MemberPageState extends State<MemberPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('memberPage'),
+        title: Text('MemberPage'),
       ),
       body: SafeArea(
         child: Center(
-          child: Text('name:' + singletonManager().user.userInfo.name),
+          child: Text('name:' + SingletonManager().user.userInfo.name),
         ),
       ),
     );

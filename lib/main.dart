@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // debugShowCheckedModeBanner: false,
       title: '熟仁直聘BD工具',
-      initialRoute: '/',
+      initialRoute: loginRoutesName,
       onGenerateRoute: onGenerateRoute,
     );
   }

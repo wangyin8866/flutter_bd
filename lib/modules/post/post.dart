@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bd/tools/singleton.dart';
 
-class postPage extends StatefulWidget {
-  postPage({Key key}) : super(key: key);
+class PostPage extends StatefulWidget {
+  PostPage({Key key}) : super(key: key);
 
-  _postPageState createState() => _postPageState();
+  _PostPageState createState() => _PostPageState();
 }
 
-class _postPageState extends State<postPage> {
+class _PostPageState extends State<PostPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('postPage'),
+        title: Text('PostPage'),
       ),
       body: SafeArea(
         child: Center(
-          child: Text('id:${singletonManager().user.userInfo.id}'),
+          child: Text('id:${SingletonManager().user.userInfo.id}'),
         ),
       ),
     );

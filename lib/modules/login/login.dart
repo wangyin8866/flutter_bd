@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bd/modules/login/user.dart';
+import 'package:flutter_bd/server/routes.dart';
 import 'package:flutter_bd/tools/singleton.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
-class loginPage extends StatefulWidget {
-  loginPage({Key key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  LoginPage({Key key}) : super(key: key);
 
-  _loginPageState createState() => _loginPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _loginPageState extends State<loginPage> {
+class _LoginPageState extends State<LoginPage> {
 
   var _userName = '18697715328';
   var _password = '123456';
@@ -24,8 +25,8 @@ class _loginPageState extends State<loginPage> {
       var json = convert.jsonDecode(jsonStr);
       print(json);
       if (json['code'] == 0) {
-        singletonManager().user = User.fromJson(json['data']);
-        Navigator.pushReplacementNamed(context, '/tabbar');
+        SingletonManager().user = User.fromJson(json['data']);
+        Navigator.pushReplacementNamed(context, tabbarRoutesName);
       } else {
         print(json['msg']);
       }
@@ -39,7 +40,7 @@ class _loginPageState extends State<loginPage> {
     return Scaffold(
       body: Center(
        child: RaisedButton(
-         child: Text('login'),
+         child: Text('Login'),
          onPressed: () {
            _login();
          },
