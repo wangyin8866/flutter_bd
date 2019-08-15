@@ -11,10 +11,8 @@ class NetWrapper {
     dio ??= Dio()
       ..options.baseUrl = NetConstant.HOST
       ..options.connectTimeout = NetConstant.CONNECT_TIMEOUT
-      ..options.receiveTimeout = NetConstant.RECEIVE_TIMEOUT;
-
-    //TODO 拦截操作，在此添加
-    dio.interceptors.add(AddHeaderInterceptor());
+      ..options.receiveTimeout = NetConstant.RECEIVE_TIMEOUT
+      ..interceptors.add(AddHeaderInterceptor());
   }
 
   request<T>(String url, CancelToken cancelToken,
