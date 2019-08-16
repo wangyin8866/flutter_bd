@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bd/tools/singleton.dart';
 
-class orderPage extends StatefulWidget {
-  orderPage({Key key}) : super(key: key);
+class OrderPage extends StatefulWidget {
+  OrderPage({Key key}) : super(key: key);
 
-  _orderPageState createState() => _orderPageState();
+  _OrderPageState createState() => _OrderPageState();
 }
 
-class _orderPageState extends State<orderPage> {
+class _OrderPageState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('orderPage'),
+        title: Text('OrderPage'),
       ),
       body: SafeArea(
         child: Center(
-          child: Text('token:' + singletonManager().user.token),
+          child: Text('token:' + SingletonManager().user.token),
         ),
       ),
     );

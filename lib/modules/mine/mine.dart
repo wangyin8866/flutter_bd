@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bd/tools/singleton.dart';
 
-class minePage extends StatefulWidget {
-  minePage({Key key}) : super(key: key);
+class MinePage extends StatefulWidget {
+  MinePage({Key key}) : super(key: key);
 
-  _minePageState createState() => _minePageState();
+  _MinePageState createState() => _MinePageState();
 }
 
-class _minePageState extends State<minePage> {
+class _MinePageState extends State<MinePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('minePage'),
+        title: Text('MinePage'),
       ),
       body: SafeArea(
         child: Center(
-          child: Text('updated_at:' + singletonManager().user.userInfo.updatedAt),
+          child: Text('updated_at:' + SingletonManager().user.userInfo.updatedAt),
         ),
       ),
     );

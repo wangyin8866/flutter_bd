@@ -14,8 +14,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // debugShowCheckedModeBanner: false,
       title: '熟仁直聘BD工具',
-      initialRoute: '/',
+      initialRoute: loginRoutesName,
       onGenerateRoute: onGenerateRoute,
+      theme: ThemeData(
+        primaryColor: Color(0xFFDA4144)
+      ),
     );
   }
 }

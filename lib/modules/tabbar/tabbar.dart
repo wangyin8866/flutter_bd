@@ -5,21 +5,21 @@ import 'package:flutter_bd/modules/order/order.dart';
 import 'package:flutter_bd/modules/post/post.dart';
 import 'package:flutter_bd/modules/schedule/schedule.dart';
 
-class tabbarWidget extends StatefulWidget {
-  tabbarWidget({Key key}) : super(key: key);
+class TabbarWidget extends StatefulWidget {
+  TabbarWidget({Key key}) : super(key: key);
 
-  _tabbarWidgetState createState() => _tabbarWidgetState();
+  _TabbarWidgetState createState() => _TabbarWidgetState();
 }
 
-class _tabbarWidgetState extends State<tabbarWidget> {
+class _TabbarWidgetState extends State<TabbarWidget> {
 
   int _currentIndex = 0;
   List _pageList = [
-   orderPage(),
-   memberPage(),
-   schedulePage(),
-   postPage(),
-   minePage()
+   OrderPage(),
+   MemberPage(),
+   SchedulePage(),
+   PostPage(),
+   MinePage()
  ];
 
   @override
