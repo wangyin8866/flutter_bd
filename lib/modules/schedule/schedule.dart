@@ -16,7 +16,7 @@ class _SchedulePageState extends State<SchedulePage> {
       ),
       body: SafeArea(
         child: Center(
-          child: Text('mobile:' + SingletonManager().user.userInfo.mobile),
+          child: Text('mobile:' + SingletonManager().userInfo.mobile),
         ),
       ),
     );

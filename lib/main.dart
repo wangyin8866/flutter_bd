@@ -1,10 +1,17 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bd/server/routes.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  runApp(MyApp());
+  runZoned(() {
+    runApp(MyApp());
+  }, onError: (Object obj, StackTrace stack) {
+    print(obj);
+    print(stack);
+  });
 }
 
 class MyApp extends StatelessWidget {
