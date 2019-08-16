@@ -50,6 +50,9 @@ class _LoginPageState extends State<LoginPage> {
     } else {
       print('status code is ${response.statusCode}');
     }
+
+    //跳转到原生页面
+//    MyFlutterPlugin.openNativePage("");
   }
 
   _checkValid() {
