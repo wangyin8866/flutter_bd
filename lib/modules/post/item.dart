@@ -18,7 +18,9 @@ class PostItem extends StatelessWidget {
                   Text(
                     '便利店营业员',
                     style: TextStyle(color: Color(0xFF333333), fontSize: 14),
-                  )
+                  ),
+                  SizedBox(width: 10,),
+                  Container(height: 12, width: 20, color: Colors.red,)
                 ],
               ),
               left: 15,
@@ -35,6 +37,8 @@ class PostItem extends StatelessWidget {
             Positioned(
               child: Row(
                 children: <Widget>[
+                Container(height: 20, width: 20, color: Colors.red,),
+                  SizedBox(width: 5,),
                   Text(
                     '7-11便利店',
                     style: TextStyle(color: Color(0xFF232323), fontSize: 12),
