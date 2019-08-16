@@ -16,7 +16,7 @@ class _PostPageState extends State<PostPage> {
       ),
       body: SafeArea(
         child: Center(
-          child: Text('id:${SingletonManager().user.userInfo.id}'),
+          child: Text('id:${SingletonManager().userInfo.id}'),
         ),
       ),
     );

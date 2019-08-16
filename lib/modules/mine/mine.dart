@@ -16,7 +16,7 @@ class _MinePageState extends State<MinePage> {
       ),
       body: SafeArea(
         child: Center(
-          child: Text('updated_at:' + SingletonManager().user.userInfo.updatedAt),
+          child: Text('im_token:' + SingletonManager().userInfo.imToken),
         ),
       ),
     );

@@ -1,4 +1,5 @@
-import 'package:flutter_bd/modules/login/user.dart';
+import 'package:flutter_bd/modules/login/userInfo.dart';
+import 'package:flutter_bd/modules/login/userLoginInfo.dart';
 
 class SingletonManager {
 
@@ -29,7 +30,9 @@ class SingletonManager {
     return _instance;
   }
   
-  // 用户对象
-  User user;
+  // 用户登录信息
+  UserLoginInfo userLoginInfo;
+  // 用户信息
+  UserInfo userInfo;
 
 }

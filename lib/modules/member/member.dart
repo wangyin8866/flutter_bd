@@ -16,7 +16,7 @@ class _MemberPageState extends State<MemberPage> {
       ),
       body: SafeArea(
         child: Center(
-          child: Text('name:' + SingletonManager().user.userInfo.name),
+          child: Text('name:' + SingletonManager().userInfo.name),
         ),
       ),
     );
