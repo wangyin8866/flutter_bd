@@ -4,6 +4,11 @@ import 'package:flutter_bd/modules/base/base_mvp.dart';
 import 'package:flutter_bd/modules/post/PostPresenter.dart';
 import 'package:flutter_bd/modules/base/base_state_page.dart';
 import 'package:flutter_bd/modules/post/item.dart';
+import 'package:flutter_bd/modules/post/job_require_dialog.dart';
+import 'package:flutter_bd/modules/post/job_type_dialog.dart';
+import 'package:flutter_bd/modules/post/life_rest_dialog.dart';
+import 'package:flutter_bd/modules/post/recruitment_info_dialog.dart';
+import 'package:flutter_bd/widget/dropdowm/gzx_dropdown_global.dart';
 
 class PostPage extends StatefulWidget {
   PostPage({Key key}) : super(key: key);
@@ -12,6 +17,15 @@ class PostPage extends StatefulWidget {
 }
 
 class _PostPageState extends BasePageState<PostPage, PostPresenter> {
+  GZXDropdownMenuController _dropdownMenuController =
+      GZXDropdownMenuController();
+  GZXDropdownMenuController _controller = GZXDropdownMenuController();
+  GlobalKey _stackKey = GlobalKey();
+  var _jobTypeLeftPosition = 0;
+  var _jobTypeRightPosition = 0;
+  var _circleLeftPosition = 0;
+  var _circleRightPosition = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,21 +34,74 @@ class _PostPageState extends BasePageState<PostPage, PostPresenter> {
         actions: _createActionList(),
       ),
       body: SafeArea(
-        child: Column(
+        child: Stack(
+          key: _stackKey,
           children: <Widget>[
-            _selectViews(),
-            SizedBox(
-              width: double.infinity,
-              height: 1,
+            Column(
+              children: <Widget>[
+                _selectViews(),
+                _lineViewWithDropDown(),
+                Expanded(
+                  child: _initListView(),
+                  flex: 1,
+                )
+              ],
             ),
-            Expanded(
-              child: _initListView(),
-              flex: 1,
-            )
+            _dropDownDialog(),
+            _dropDownCircleDialog(),
           ],
         ),
       ),
     );
+  }
+
+  _dropDownDialog() {
+    return GZXDropDownMenu(
+        controller: _dropdownMenuController,
+        animationMilliseconds: 0,
+        menus: [
+          GZXDropdownMenuBuilder(
+              dropDownWidget: JobTypeDialog(
+                  _jobTypeLeftPosition, _jobTypeRightPosition, null, null,
+                  (leftSelect, rightSelect) {
+                _jobTypeLeftPosition = leftSelect;
+                _jobTypeRightPosition = rightSelect;
+                _dropdownMenuController.hide();
+              }),
+              dropDownHeight: 412),
+          GZXDropdownMenuBuilder(
+              dropDownWidget: RecruitmentInfoDialog((one, two, three) {
+                _dropdownMenuController.hide();
+              }),
+              dropDownHeight: 370),
+          GZXDropdownMenuBuilder(
+              dropDownWidget: LifeRestDialog((one, two, three) {
+                _dropdownMenuController.hide();
+              }),
+              dropDownHeight: 440),
+          GZXDropdownMenuBuilder(
+              dropDownWidget: JobRequireDialog((gender, school, minAge, maxAge) {
+                _dropdownMenuController.hide();
+              }),
+              dropDownHeight: 380)
+        ]);
+  }
+
+  _dropDownCircleDialog() {
+    return GZXDropDownMenu(
+        controller: _controller,
+        animationMilliseconds: 0,
+        menus: [
+          GZXDropdownMenuBuilder(
+              dropDownWidget: JobTypeDialog(
+                  _circleLeftPosition, _circleRightPosition, null, null,
+                  (leftSelect, rightSelect) {
+                _circleLeftPosition = leftSelect;
+                _circleRightPosition = rightSelect;
+                _controller.hide();
+              }),
+              dropDownHeight: 412),
+        ]);
   }
 
   _createActionList() {
@@ -42,7 +109,11 @@ class _PostPageState extends BasePageState<PostPage, PostPresenter> {
       Padding(
         padding: EdgeInsets.only(left: 3),
         child: GestureDetector(
-          onTap: () {},
+          onTap: () {
+            if (!_controller.isShow) {
+              _controller.show(0);
+            }
+          },
           child: Container(
             width: 85,
             height: double.infinity,
@@ -101,41 +172,37 @@ class _PostPageState extends BasePageState<PostPage, PostPresenter> {
     return Container(
       color: Colors.white,
       child: Padding(
-        padding: EdgeInsets.only(left: 0, right: 0, top: 10, bottom: 10),
-        child: Row(
-          children: <Widget>[
-            Expanded(
-              child: _selectView('岗位类型'),
-              flex: 1,
-            ),
-            Expanded(
-              child: _selectView('招聘信息'),
-              flex: 1,
-            ),
-            Expanded(
-              child: _selectView('吃住信息'),
-              flex: 1,
-            ),
-            Expanded(
-              child: _selectView('岗位信息'),
-              flex: 1,
-            )
+        padding: EdgeInsets.only(left: 5),
+        child: GZXDropDownHeader(
+          stackKey: _stackKey,
+          items: [
+            GZXDropDownHeaderItem('岗位类型', iconData: Icons.arrow_drop_down),
+            GZXDropDownHeaderItem('招聘信息', iconData: Icons.arrow_drop_down),
+            GZXDropDownHeaderItem('吃住信息', iconData: Icons.arrow_drop_down),
+            GZXDropDownHeaderItem('岗位信息', iconData: Icons.arrow_drop_down)
           ],
+          controller: _dropdownMenuController,
+          dividerHeight: 0,
+          borderWidth: 0,
+          color: Colors.transparent,
+          style: TextStyle(color: Colors.black, fontSize: 14),
+          dropDownStyle: TextStyle(color: Color(0xFFEB545E), fontSize: 14),
         ),
       ),
     );
   }
 
-  Widget _selectView(String type) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          type,
-          style: TextStyle(color: Colors.black, fontSize: 14),
-        )
-      ],
+  Widget _lineViewWithDropDown() {
+    return GZXDropDownHeader(
+      stackKey: _stackKey,
+      items: [GZXDropDownHeaderItem('')],
+      controller: _controller,
+      dividerHeight: 0,
+      borderWidth: 0,
+      height: 1,
+      color: Colors.transparent,
+      style: TextStyle(color: Colors.black, fontSize: 14),
+      dropDownStyle: TextStyle(color: Color(0xFFEB545E), fontSize: 14),
     );
   }
 
