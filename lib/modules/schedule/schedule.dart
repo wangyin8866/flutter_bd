@@ -177,7 +177,7 @@ class _SchedulePageState extends State<SchedulePage> {
       child: Stack(
         children: <Widget>[
           Container(
-            alignment: Alignment(0.3, 0),
+            alignment: Alignment(0.4, 0),
             child: Text(
               title,
               style: TextStyle(
