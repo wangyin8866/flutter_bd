@@ -43,7 +43,8 @@ class _OrderPageState extends State<OrderPage>
         setState(() {
           _name = SingletonManager().userInfo.name;
         });
-      } else if (json['code'] == 200001) {    // 登录信息无效
+      } else if (json['code'] == 200001) {
+        // 登录信息无效
         Storage.remove(Config.TOKEN);
         Navigator.pushReplacementNamed(context, loginRoutesName);
       } else {
@@ -188,6 +189,46 @@ class _OrderPageState extends State<OrderPage>
                     color: Color(0xfff6f6f6),
                     borderRadius: BorderRadius.circular(2),
                   ),
+                  padding: EdgeInsets.fromLTRB(9, 8, 9, 8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.room,
+                            size: 12,
+                            color: Color(0xffa2a6ae),
+                          ),
+                          SizedBox(width: 4),
+                          Text(
+                            '上海-上海市-浦东新区·陆家嘴浦东南路1271号',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xff4c4e5b),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.access_alarm,
+                            size: 12,
+                            color: Color(0xffa2a6ae),
+                          ),
+                          SizedBox(width: 4),
+                          Text(
+                            '2019-06-12 13:00',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xff4c4e5b),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
                 Expanded(
                   child: Row(
@@ -289,8 +330,172 @@ class _OrderPageState extends State<OrderPage>
               color: Colors.white,
               borderRadius: BorderRadius.circular(5),
             ),
-            child: Center(
-              child: Text(index.toString()),
+            padding: EdgeInsets.fromLTRB(15, 11, 15, 0),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      '其妙  18612345678',
+                      style: TextStyle(
+                        color: Color(0xff282828),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(),
+                    ),
+                    GestureDetector(
+                      child: Icon(
+                        Icons.message,
+                        color: Color(0xff4a4c5a),
+                      ),
+                      onTap: () {
+                        print('msg---$index');
+                      },
+                    ),
+                    SizedBox(width: 33),
+                    GestureDetector(
+                      child: Icon(
+                        Icons.call,
+                        color: Color(0xff4a4c5a),
+                      ),
+                      onTap: () {
+                        print('call---$index');
+                      },
+                    ),
+                    SizedBox(width: 114),
+                  ],
+                ),
+                SizedBox(height: 10),
+                Container(
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: Color(0xfff6f6f6),
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                  padding: EdgeInsets.fromLTRB(9, 8, 9, 8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.room,
+                            size: 12,
+                            color: Color(0xffa2a6ae),
+                          ),
+                          SizedBox(width: 4),
+                          Text(
+                            '上海-上海市-浦东新区·陆家嘴浦东南路1271号',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xff4c4e5b),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.access_alarm,
+                            size: 12,
+                            color: Color(0xffa2a6ae),
+                          ),
+                          SizedBox(width: 4),
+                          Text(
+                            '2019-06-12 13:00',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xff4c4e5b),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        '我已到达',
+                        style: TextStyle(
+                          color: Color(0xff030303),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(),
+                      ),
+                      Container(
+                        height: 23,
+                        width: 72,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Color(0xffc2c2c2),
+                                offset: Offset(0, 3),
+                                blurRadius: 12),
+                          ],
+                        ),
+                        child: RaisedButton(
+                          color: Color(0xffc2c2c2),
+                          padding: EdgeInsets.zero,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                          ),
+                          child: Text(
+                            '会员未到面',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 11,
+                            ),
+                          ),
+                          onPressed: () {
+                            print('取消面试');
+                          },
+                        ),
+                      ),
+                      SizedBox(width: 11),
+                      Container(
+                        height: 23,
+                        width: 61,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Color(0xffe7434c).withOpacity(0.41),
+                                offset: Offset(0, 3),
+                                blurRadius: 12),
+                          ],
+                        ),
+                        child: RaisedButton(
+                          color: Color(0xffea4c56),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                          ),
+                          child: Text(
+                            '确认',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 11,
+                            ),
+                          ),
+                          onPressed: () {
+                            print('确认');
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
           onTap: () {
@@ -301,5 +506,4 @@ class _OrderPageState extends State<OrderPage>
       ],
     );
   }
-
 }
