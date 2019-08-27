@@ -19,9 +19,9 @@ class _LoginPageState extends State<LoginPage> {
   var _click;
 
   @override
-  void initState() { 
+  void initState() {
     super.initState();
-    
+
     _checkLogined();
   }
 
@@ -43,6 +43,7 @@ class _LoginPageState extends State<LoginPage> {
       if (json['code'] == 0) {
         SingletonManager().userLoginInfo = UserLoginInfo.fromJson(json['data']);
         Storage.save(Config.TOKEN, SingletonManager().userLoginInfo.token);
+        Navigator.of(context).pop();
         Navigator.pushReplacementNamed(context, tabbarRoutesName);
       } else {
         print(json['msg']);
@@ -50,9 +51,42 @@ class _LoginPageState extends State<LoginPage> {
     } else {
       print('status code is ${response.statusCode}');
     }
+  }
 
-    //跳转到原生页面
-//    MyFlutterPlugin.openNativePage("");
+  _showLoadingDialog() {
+    showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context) {
+          return Material(
+            type: MaterialType.transparency,
+            child: Center(
+              child: Container(
+                height: 120,
+                width: 120,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 20),
+                    CircularProgressIndicator(),
+                    Padding(
+                      padding: EdgeInsets.only(top: 20),
+                      child: Text(
+                        '登录中...',
+                        style: TextStyle(
+                          fontSize: 12,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
   }
 
   _checkValid() {
@@ -60,6 +94,7 @@ class _LoginPageState extends State<LoginPage> {
     if (isValid) {
       _click = () {
         FocusScope.of(context).requestFocus(FocusNode());
+        _showLoadingDialog();
         _login();
       };
     } else {
