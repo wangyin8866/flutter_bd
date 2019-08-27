@@ -27,20 +27,25 @@ class NetWrapper {
           options: Options(method: method),
           cancelToken: cancelToken);
       if (response?.statusCode == 200) {
+        print('response--->$response.data');
         var bean = BeanFactory.wrapperBean<T>(response.data);
         if (bean == null) {
+          print('bean为空');
           onSuccess(BaseBean());
         } else {
           if (bean.code == NetConstant.SUCCESS_CODE) {
             onSuccess(bean);
           } else {
+            print('bean.code--->${bean.code}, bean.msg--->${bean.msg}');
             onErrorCode(bean.code, bean.msg);
           }
         }
       } else {
+        print('statusCode--->${response?.statusCode}, statusMessage--->${response?.statusMessage}');
         onOtherError(response?.statusMessage);
       }
     } catch (e) {
+      print('网络请求出错--->$e');
       onOtherError('网络请求出错');
     }
   }

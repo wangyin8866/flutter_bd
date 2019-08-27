@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bd/model/example.dart';
 import 'package:flutter_bd/modules/base/base_mvp.dart';
-import 'package:flutter_bd/modules/post/PostPresenter.dart';
+import 'package:flutter_bd/modules/post/post_presenter.dart';
 import 'package:flutter_bd/modules/base/base_state_page.dart';
 import 'package:flutter_bd/modules/post/item.dart';
 import 'package:flutter_bd/modules/post/job_require_dialog.dart';

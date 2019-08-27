@@ -1,25 +1,30 @@
-class UserLoginInfo {
+import 'package:flutter_bd/modules/base/base_mvp.dart';
+
+class UserLoginInfo extends BaseBean {
+
+  Data data;
+
+  UserLoginInfo.fromJson(Map<String, dynamic> json) {
+    code = json['code'] as int;
+    msg = json['msg'] as String;
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+  }
+
+}
+
+class Data {
+
+  Data();
+
   User user;
   String token;
   List<String> perms;
-
-  UserLoginInfo({this.user, this.token, this.perms});
-
-  UserLoginInfo.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String, dynamic> json) {
     user = json['user'] != null ? new User.fromJson(json['user']) : null;
     token = json['token'];
     perms = json['perms'].cast<String>();
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.user != null) {
-      data['user'] = this.user.toJson();
-    }
-    data['token'] = this.token;
-    data['perms'] = this.perms;
-    return data;
-  }
 }
 
 class User {
@@ -32,15 +37,7 @@ class User {
   int isLocked;
   String updatedAt;
 
-  User(
-      {this.id,
-      this.name,
-      this.mobile,
-      this.isAdmin,
-      this.isBd,
-      this.deletedAt,
-      this.isLocked,
-      this.updatedAt});
+  User();
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
