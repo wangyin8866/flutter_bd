@@ -1,6 +1,6 @@
 
 class NetConstant {
-  static const HOST = '';
+  static const HOST = 'http://onsite-api.ci.dev.lanxinka.com/';
   static const H5_HOST = '';
   static const ACTIVITY_HOST = '';
 

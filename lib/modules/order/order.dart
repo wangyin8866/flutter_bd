@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bd/modules/login/userInfo.dart';
+import 'package:flutter_bd/model/userInfo.dart';
 import 'package:flutter_bd/server/routes.dart';
 import 'package:flutter_bd/tools/singleton.dart';
 import 'package:flutter_bd/tools/storage.dart';

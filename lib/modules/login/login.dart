@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bd/config/config.dart';
-import 'package:flutter_bd/modules/login/userLoginInfo.dart';
+import 'package:flutter_bd/model/userLoginInfo.dart';
+import 'package:flutter_bd/modules/base/base_mvp.dart';
+import 'package:flutter_bd/modules/base/base_state_page.dart';
+import 'package:flutter_bd/modules/login/login_presenter.dart';
 import 'package:flutter_bd/server/routes.dart';
 import 'package:flutter_bd/tools/singleton.dart';
 import 'package:flutter_bd/tools/storage.dart';
-import 'dart:convert' as convert;
-import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -13,7 +14,7 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends BasePageState<LoginPage, LoginPresenter> {
   var _userName = '';
   var _password = '';
   var _click;
@@ -32,24 +33,13 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  _login() async {
-    var url =
-        'http://onsite-api.ci.dev.lanxinka.com/1.0/admin/manager/login?client_type=2&mobile=$_userName&password=$_password';
-    var response = await http.post(url);
-    if (response.statusCode == 200) {
-      var jsonStr = convert.Utf8Decoder().convert(response.bodyBytes);
-      var json = convert.jsonDecode(jsonStr);
-      print(json);
-      if (json['code'] == 0) {
-        SingletonManager().userLoginInfo = UserLoginInfo.fromJson(json['data']);
-        Storage.save(Config.TOKEN, SingletonManager().userLoginInfo.token);
-        Navigator.of(context).pop();
-        Navigator.pushReplacementNamed(context, tabbarRoutesName);
-      } else {
-        print(json['msg']);
-      }
-    } else {
-      print('status code is ${response.statusCode}');
+  @override
+  void showSuccess(BaseBean response) {
+    if (response is UserLoginInfo) {
+      SingletonManager().userLoginInfo = response;
+      Storage.save(Config.TOKEN, SingletonManager().userLoginInfo.data.token);
+      Navigator.of(context).pop();
+      Navigator.pushReplacementNamed(context, tabbarRoutesName);
     }
   }
 
@@ -87,6 +77,10 @@ class _LoginPageState extends State<LoginPage> {
             ),
           );
         });
+  }
+
+  _login() {
+    mPresenter?.requestLogin<UserLoginInfo>(_userName, _password);
   }
 
   _checkValid() {
@@ -250,5 +244,10 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  @override
+  LoginPresenter createPresenter() {
+    return LoginPresenter();
   }
 }

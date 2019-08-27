@@ -5,9 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bd/server/routes.dart';
 
 void main() {
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runZoned(() {
     runApp(MyApp());
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   }, onError: (Object obj, StackTrace stack) {
     print(obj);
     print(stack);
