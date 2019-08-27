@@ -22,7 +22,7 @@ class BasePresenter<V extends BaseView> extends IPresenter {
       view?.showLoading();
     }
 
-    NetWrapper.init().request(url, _cancelToken,
+    NetWrapper.init().request<T>(url, _cancelToken,
         params: params,
         method: method,
         onSuccess: (baseBean) {

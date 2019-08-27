@@ -1,5 +1,5 @@
-import 'package:flutter_bd/modules/login/userInfo.dart';
-import 'package:flutter_bd/modules/login/userLoginInfo.dart';
+import 'package:flutter_bd/model/userInfo.dart';
+import 'package:flutter_bd/model/userLoginInfo.dart';
 
 class SingletonManager {
 
