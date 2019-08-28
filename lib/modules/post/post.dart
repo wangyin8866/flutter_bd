@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bd/model/example.dart';
 import 'package:flutter_bd/modules/base/base_mvp.dart';
-import 'package:flutter_bd/modules/post/PostPresenter.dart';
+import 'package:flutter_bd/modules/post/post_presenter.dart';
 import 'package:flutter_bd/modules/base/base_state_page.dart';
 import 'package:flutter_bd/modules/post/item.dart';
 import 'package:flutter_bd/modules/post/job_require_dialog.dart';
@@ -135,7 +135,9 @@ class _PostPageState extends BasePageState<PostPage, PostPresenter> {
             child: Icon(Icons.info)),
       ),
       GestureDetector(
-        onTap: () {},
+        onTap: () {
+          mPresenter?.requestLogin('12334', '123213123');
+        },
         child: Padding(
             padding: EdgeInsets.only(left: 8, right: 8),
             child: Icon(Icons.info)),

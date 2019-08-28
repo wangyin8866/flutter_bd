@@ -1,7 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bd/config/config.dart';
 import 'package:flutter_bd/modules/base/base_mvp.dart';
 import 'package:flutter_bd/net/constant.dart';
 import 'package:flutter_bd/net/net.dart';
+import 'package:flutter_bd/server/routes.dart';
+import 'package:flutter_bd/tools/storage.dart';
 import 'base_mvp.dart';
 
 class BasePresenter<V extends BaseView> extends IPresenter {
@@ -22,7 +26,7 @@ class BasePresenter<V extends BaseView> extends IPresenter {
       view?.showLoading();
     }
 
-    NetWrapper.init().request(url, _cancelToken,
+    NetWrapper.init().request<T>(url, _cancelToken,
         params: params,
         method: method,
         onSuccess: (baseBean) {
@@ -36,6 +40,15 @@ class BasePresenter<V extends BaseView> extends IPresenter {
             view?.hideLoading();
           }
           view?.showErrorCode(code, msg);
+
+          if (code == 200001) {
+            // 登录信息无效
+            Storage.remove(Config.TOKEN);
+            Navigator.pushAndRemoveUntil(
+                view?.getContext(),
+                MaterialPageRoute(builder: routes[loginRoutesName]),
+                    (Route<dynamic> route) => false);
+          }
         },
         onOtherError: (msg) {
           if (isShowLoading) {
