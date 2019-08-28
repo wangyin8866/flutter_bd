@@ -69,4 +69,7 @@ abstract class BasePageState<T extends StatefulWidget, P extends BasePresenter> 
     mPresenter?.dispose();
   }
 
+  @override
+  BuildContext getContext() => context;
+
 }

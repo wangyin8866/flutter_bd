@@ -1,4 +1,6 @@
 
+import 'package:flutter/cupertino.dart';
+
 abstract class BaseView {
 
   void showLoading();
@@ -10,6 +12,8 @@ abstract class BaseView {
   void showErrorCode(int code, String msg);
 
   void showOtherError(String msg);
+
+  BuildContext getContext();
 
 }
 
