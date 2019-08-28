@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bd/model/userInfo.dart';
+import 'package:flutter_bd/modules/base/base_mvp.dart';
+import 'package:flutter_bd/modules/base/base_state_page.dart';
+import 'package:flutter_bd/modules/login/login_presenter.dart';
 import 'package:flutter_bd/server/routes.dart';
 import 'package:flutter_bd/tools/singleton.dart';
-import 'package:flutter_bd/tools/storage.dart';
-import 'package:flutter_bd/config/config.dart';
-import 'dart:convert' as convert;
-import 'package:http/http.dart' as http;
 
 class OrderPage extends StatefulWidget {
   OrderPage({Key key}) : super(key: key);
@@ -13,7 +12,7 @@ class OrderPage extends StatefulWidget {
   _OrderPageState createState() => _OrderPageState();
 }
 
-class _OrderPageState extends State<OrderPage>
+class _OrderPageState extends BasePageState<OrderPage, LoginPresenter>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
   String _name = '';
@@ -26,33 +25,22 @@ class _OrderPageState extends State<OrderPage>
     _tabController.addListener(() {
       print(_tabController.index);
     });
-
+    
     _getUserInfo();
   }
 
-  _getUserInfo() async {
-    var token = await Storage.get(Config.TOKEN);
-    var url = 'http://onsite-api.ci.dev.lanxinka.com/1.0/bd/user/info';
-    var response = await http.get(url, headers: {'Authorization': token});
-    if (response.statusCode == 200) {
-      var jsonStr = convert.Utf8Decoder().convert(response.bodyBytes);
-      var json = convert.jsonDecode(jsonStr);
-      print(json);
-      if (json['code'] == 0) {
-        SingletonManager().userInfo = UserInfo.fromJson(json['data']);
-        setState(() {
-          _name = SingletonManager().userInfo.name;
-        });
-      } else if (json['code'] == 200001) {
-        // 登录信息无效
-        Storage.remove(Config.TOKEN);
-        Navigator.pushReplacementNamed(context, loginRoutesName);
-      } else {
-        print(json['msg']);
-      }
-    } else {
-      print('status code is ${response.statusCode}');
+  @override
+  void showSuccess(BaseBean response) {
+    if (response is UserInfo) {
+      SingletonManager().userInfo = response;
+      setState(() {
+        _name = SingletonManager().userInfo.data.name;
+      });
     }
+  }
+
+  _getUserInfo() {
+    mPresenter?.requestUserInfo<UserInfo>();
   }
 
   @override
@@ -506,5 +494,10 @@ class _OrderPageState extends State<OrderPage>
         SizedBox(height: 10),
       ],
     );
+  }
+
+  @override
+  LoginPresenter createPresenter() {
+    return LoginPresenter();
   }
 }

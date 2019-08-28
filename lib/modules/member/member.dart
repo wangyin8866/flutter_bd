@@ -20,7 +20,7 @@ class _MemberPageState extends State<MemberPage> {
           ),
           Container(
             alignment: Alignment.centerLeft,
-            child: Text('欢迎！${SingletonManager().userInfo.name}'),
+            child: Text('欢迎！${SingletonManager().userInfo.data.name}'),
           ),
           Expanded(
             child: Container(),

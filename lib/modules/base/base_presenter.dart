@@ -21,41 +21,38 @@ class BasePresenter<V extends BaseView> extends IPresenter {
       {Map<String, dynamic> params = const {},
       String method = NetConstant.GET,
       bool isShowLoading = true}) async {
+    Future.delayed(Duration(milliseconds: 200)).then((_) {
+      if (isShowLoading) {
+        view?.showLoading();
+      }
 
-    if (isShowLoading) {
-      view?.showLoading();
-    }
+      NetWrapper.init().request<T>(url, _cancelToken,
+          params: params, method: method, onSuccess: (baseBean) {
+        if (isShowLoading) {
+          view?.hideLoading();
+        }
+        view?.showSuccess(baseBean);
+      }, onErrorCode: (code, msg) {
+        if (isShowLoading) {
+          view?.hideLoading();
+        }
+        view?.showErrorCode(code, msg);
 
-    NetWrapper.init().request<T>(url, _cancelToken,
-        params: params,
-        method: method,
-        onSuccess: (baseBean) {
-          if (isShowLoading) {
-            view?.hideLoading();
-          }
-          view?.showSuccess(baseBean);
-        },
-        onErrorCode: (code, msg) {
-          if (isShowLoading) {
-            view?.hideLoading();
-          }
-          view?.showErrorCode(code, msg);
-
-          if (code == 200001) {
-            // 登录信息无效
-            Storage.remove(Config.TOKEN);
-            Navigator.pushAndRemoveUntil(
-                view?.getContext(),
-                MaterialPageRoute(builder: routes[loginRoutesName]),
-                    (Route<dynamic> route) => false);
-          }
-        },
-        onOtherError: (msg) {
-          if (isShowLoading) {
-            view?.hideLoading();
-          }
-          view?.showOtherError(msg);
-        });
+        if (code == 200001) {
+          // 登录信息无效
+          Storage.remove(Config.TOKEN);
+          Navigator.pushAndRemoveUntil(
+              view?.getContext(),
+              MaterialPageRoute(builder: routes[loginRoutesName]),
+              (Route<dynamic> route) => false);
+        }
+      }, onOtherError: (msg) {
+        if (isShowLoading) {
+          view?.hideLoading();
+        }
+        view?.showOtherError(msg);
+      });
+    });
   }
 
   @override

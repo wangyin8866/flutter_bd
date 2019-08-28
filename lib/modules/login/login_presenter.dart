@@ -16,4 +16,8 @@ class LoginPresenter extends BasePresenter {
     invoke<T>(UrlPath.login, params: map, method: NetConstant.POST);
   }
 
+  requestUserInfo<T>() {
+    invoke<T>(UrlPath.userInfo, method: NetConstant.GET, isShowLoading: false);
+  }
+
 }
