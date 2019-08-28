@@ -17,32 +17,27 @@ class BasePresenter<V extends BaseView> extends IPresenter {
       {Map<String, dynamic> params = const {},
       String method = NetConstant.GET,
       bool isShowLoading = true}) async {
-
     if (isShowLoading) {
       view?.showLoading();
     }
 
     NetWrapper.init().request<T>(url, _cancelToken,
-        params: params,
-        method: method,
-        onSuccess: (baseBean) {
-          if (isShowLoading) {
-            view?.hideLoading();
-          }
-          view?.showSuccess(baseBean);
-        },
-        onErrorCode: (code, msg) {
-          if (isShowLoading) {
-            view?.hideLoading();
-          }
-          view?.showErrorCode(code, msg);
-        },
-        onOtherError: (msg) {
-          if (isShowLoading) {
-            view?.hideLoading();
-          }
-          view?.showOtherError(msg);
-        });
+        params: params, method: method, onSuccess: (baseBean) {
+      if (isShowLoading) {
+        view?.hideLoading();
+      }
+      view?.showSuccess(baseBean);
+    }, onErrorCode: (code, msg) {
+      if (isShowLoading) {
+        view?.hideLoading();
+      }
+      view?.showErrorCode(code, msg);
+    }, onOtherError: (msg) {
+      if (isShowLoading) {
+        view?.hideLoading();
+      }
+      view?.showOtherError(msg);
+    });
   }
 
   @override
