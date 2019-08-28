@@ -205,33 +205,43 @@ class _MemberPageState extends State<MemberPage> {
         ),
         child: Column(
           children: <Widget>[
-            Stack(
-              children: <Widget>[
-                Positioned(
-                  left: 16,
-                  top: 13,
-                  right: 55,
-                  height: 20,
-                  child: Row(
-                    children: <Widget>[
-                      Text('吴凡 18697715328'),
-                      Image.network(
-                        'https://www.baidu.com/img/bd_logo1.png?where=super',
-                        width: 44,
-                        height: 15,
-                        color: Colors.red,
-                      ),
-                    ],
+            Container(
+              height: 55,
+              color: Colors.yellow,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Row(
+                      children: <Widget>[
+                        Text(
+                            '吴凡 18697715328' * 1,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        Image.network(
+                          'https://www.baidu.com/img/bd_logo1.png?where=super',
+                          fit: BoxFit.cover,
+                          width: 44,
+                          height: 15,
+                          // color: Colors.red,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Positioned(
-                  right: 12,
-                  top: 7,
-                  width: 28,
-                  height: 32,
-                  child: Image.network('https://www.baidu.com/img/bd_logo1.png?where=super'),
-                ),
-              ],
+                  Container(
+                    padding: EdgeInsets.only(right: 10),
+                    child: Image.network(
+                      'https://www.baidu.com/img/bd_logo1.png?where=super',
+                      fit: BoxFit.cover,
+                      width: 28,
+                      height: 32,
+                      // color: Colors.red,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
