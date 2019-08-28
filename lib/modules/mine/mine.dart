@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bd/widget/my_custom_tab.dart';
+import 'package:flutter_bd/widget/my_custom_text.dart';
 
 class MinePage extends StatefulWidget {
   MinePage({Key key}) : super(key: key);
@@ -17,16 +19,12 @@ class _MinePageState extends State<MinePage> {
         child: SingleChildScrollView(
           child: Stack(
             children: <Widget>[
-              topCardWidget(),
-//            Column(
-//              children: <Widget>[
-//
-//                Container(
-//                  height: 600,
-//                  color: Color(0xffffffff),
-//                )
-//              ],
-//            ),
+              Column(
+                children: <Widget>[
+                  topCardWidget(),
+                  bottomWidget(),
+                ],
+              ),
               centerCardWidget()
             ],
           ),
@@ -208,28 +206,121 @@ class _MinePageState extends State<MinePage> {
                 children: <Widget>[
                   Expanded(
                     flex: 1,
-                    child: Text(
-                      "个人今日数据",
-                      style: TextStyle(
-                          color: Color(0xFFD61A1A),
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600),
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 17, 0, 9),
+                      child: Text(
+                        "个人今日数据",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Color(0xFFD61A1A),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
+                  ),
+                  Container(
+                    width: 1,
+                    height: 33,
+                    color: Color(0xFFE8E8E8),
                   ),
                   Expanded(
                     flex: 1,
-                    child: Text(
-                      "个人今日数据",
-                      style: TextStyle(
-                          color: Color(0xFFD61A1A),
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600),
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 17, 0, 9),
+                      child: Text(
+                        "团队今日数据",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Color(0xFF4A4C5B),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
                   )
                 ],
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(10, 0, 13, 20),
+                width: double.infinity,
+                height: 1,
+                color: Color(0xFFE8E8E8),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  MyCustomText(
+                    count: "10",
+                    text: "新增简历",
+                  ),
+                  MyCustomText(
+                    count: "20",
+                    text: "新增预约",
+                  ),
+                  MyCustomText(
+                    count: "30",
+                    text: "新增刀面",
+                  )
+                ],
+              ),
+              SizedBox(height: 15),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  MyCustomText(
+                    count: "8",
+                    text: "面试通过",
+                  ),
+                  MyCustomText(
+                    count: "8",
+                    text: "新增入职",
+                  ),
+                  MyCustomText(
+                    count: "0",
+                    text: "新增离职",
+                  )
+                ],
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(10, 12, 13, 0),
+                width: double.infinity,
+                height: 1,
+                color: Color(0xFFE8E8E8),
+              ),
+              Expanded(
+                child: Row(
+                  children: <Widget>[
+                    Expanded(child: SizedBox(), flex: 1),
+                    Text(
+                      "查看历史",
+                      style: TextStyle(color: Color(0xFF5D5D5D)),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(8, 0, 12, 0),
+                      child: Text(
+                        ">",
+                        style: TextStyle(color: Color(0xFF5D5D5D)),
+                      ),
+                    )
+                  ],
+                ),
+                flex: 1,
               )
             ],
           ),
         ));
+  }
+
+  Widget bottomWidget() {
+    return Container(
+      margin: EdgeInsets.fromLTRB(0, 440, 0, 0),
+      color: Color(0xffffffff),
+      child: Column(
+        children: <Widget>[
+          MyCustomTab(imgPath: "images/icon_activity.png",content: "我的二维码",onTap: (){
+
+          },)
+        ],
+      ),
+    );
   }
 }
