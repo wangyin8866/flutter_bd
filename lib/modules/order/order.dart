@@ -302,6 +302,7 @@ class _OrderPageState extends State<OrderPage>
                           ),
                           onPressed: () {
                             print('确认');
+                            Navigator.pushNamed(context, orderDetailRoutesName);
                           },
                         ),
                       ),
