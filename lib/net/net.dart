@@ -5,10 +5,10 @@ import 'package:flutter_bd/net/interceptor.dart';
 import 'package:flutter_bd/net/bean_factory.dart';
 
 class NetWrapper {
-  static Dio dio;
+  static Dio _dio;
 
   NetWrapper.init() {
-    dio ??= Dio()
+    _dio ??= Dio()
       ..options.baseUrl = NetConstant.HOST
       ..options.connectTimeout = NetConstant.CONNECT_TIMEOUT
       ..options.receiveTimeout = NetConstant.RECEIVE_TIMEOUT
@@ -22,7 +22,7 @@ class NetWrapper {
       Function(int code, String msg) onErrorCode,
       Function(String msg) onOtherError}) async {
     try {
-      Response response = await dio.request(url,
+      Response response = await _dio.request(url,
           data: params,
           options: Options(method: method),
           cancelToken: cancelToken);

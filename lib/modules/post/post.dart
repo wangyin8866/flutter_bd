@@ -135,7 +135,9 @@ class _PostPageState extends BasePageState<PostPage, PostPresenter> {
             child: Icon(Icons.info)),
       ),
       GestureDetector(
-        onTap: () {},
+        onTap: () {
+          mPresenter?.requestLogin('12334', '123213123');
+        },
         child: Padding(
             padding: EdgeInsets.only(left: 8, right: 8),
             child: Icon(Icons.info)),

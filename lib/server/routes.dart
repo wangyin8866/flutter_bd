@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bd/modules/login/login.dart';
+import 'package:flutter_bd/modules/post/post_detail.dart';
 import 'package:flutter_bd/modules/tabbar/tabbar.dart';
 
 final loginRoutesName = '/';
 final tabbarRoutesName = '/tabbar';
+final postDetailRoutesName = '/postDetail';
 
 final routes = {
   loginRoutesName: (context) => LoginPage(),
   tabbarRoutesName: (context) => TabbarWidget(),
+  postDetailRoutesName: (context, {arguments}) => PostDetailPage()
   // '/orderDetail': (context, {arguments}) => orderDetailWidget(arguments: arguments),
 };
 
