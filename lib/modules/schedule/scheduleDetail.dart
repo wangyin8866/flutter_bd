@@ -205,13 +205,16 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
                           color: Color(0xffa2a6ae),
                         ),
                         SizedBox(width: 4),
-                        Text(
-                          '上海-上海市-浦东新区·陆家嘴浦东南路',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Color(0xff4c4e5b),
+                        Expanded(
+                          child: Text(
+                            '上海-上海市-浦东新区·陆家嘴浦东南路' * 2,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xff4c4e5b),
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
                           ),
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),

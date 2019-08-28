@@ -1,4 +1,21 @@
-class UserInfo {
+import 'package:flutter_bd/modules/base/base_mvp.dart';
+
+class UserInfo extends BaseBean {
+
+  Data data;
+
+  UserInfo.fromJson(Map<String, dynamic> json) {
+    code = json['code'] as int;
+    msg = json['msg'] as String;
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+  }
+
+}
+
+class Data {
+
+  Data();
+
   int id;
   String name;
   String mobile;
@@ -27,36 +44,7 @@ class UserInfo {
   List<String> districtList;
   String scheduleInfo;
 
-  UserInfo(
-      {this.id,
-      this.name,
-      this.mobile,
-      this.bdToken,
-      this.imUserId,
-      this.registerId,
-      this.imToken,
-      this.imPortrait,
-      this.lastLocationLon,
-      this.lastLocationLat,
-      this.isAdmin,
-      this.isBd,
-      this.isLocked,
-      this.wechat,
-      this.remark,
-      this.regionName,
-      this.regionId,
-      this.cityName,
-      this.cityId,
-      this.pid,
-      this.cityAdminId,
-      this.bdmAdminId,
-      this.createdAt,
-      this.roleName,
-      this.level,
-      this.districtList,
-      this.scheduleInfo});
-
-  UserInfo.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     mobile = json['mobile'];
@@ -80,9 +68,13 @@ class UserInfo {
     cityAdminId = json['city_admin_id'];
     bdmAdminId = json['bdm_admin_id'];
     createdAt = json['created_at'];
-    roleName = json['role_name'].cast<String>();
+    if (json['role_name'] != null) {
+      roleName = json['role_name'].cast<String>();
+    }
     level = json['level'];
-    roleName = json['district_list'].cast<String>();
+    if (json['district_list'] != null) {
+      roleName = json['district_list'].cast<String>();
+    }
     scheduleInfo = json['schedule_info'];
   }
 

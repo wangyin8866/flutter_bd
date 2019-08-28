@@ -1,5 +1,6 @@
 
 import 'package:flutter_bd/model/example.dart';
+import 'package:flutter_bd/model/userInfo.dart';
 import 'package:flutter_bd/model/userLoginInfo.dart';
 
 class BeanFactory {
@@ -10,6 +11,8 @@ class BeanFactory {
         return Example.fromJson(json);
       case 'UserLoginInfo':
         return UserLoginInfo.fromJson(json);
+        case 'UserInfo':
+        return UserInfo.fromJson(json);
       default:
         return null;
     }

@@ -38,7 +38,7 @@ class _MemberPageState extends State<MemberPage> {
         ),
         Container(
           alignment: Alignment.centerLeft,
-          child: Text('欢迎！${SingletonManager().userInfo.name}'),
+          child: Text('欢迎！${SingletonManager().userInfo.data.name}'),
         ),
         Expanded(
           child: Container(),
@@ -216,10 +216,10 @@ class _MemberPageState extends State<MemberPage> {
                     child: Row(
                       children: <Widget>[
                         Text(
-                            '吴凡 18697715328' * 1,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                          '吴凡 18697715328' * 1,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                         Image.network(
                           'https://www.baidu.com/img/bd_logo1.png?where=super',
                           fit: BoxFit.cover,
