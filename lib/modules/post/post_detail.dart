@@ -362,12 +362,13 @@ class _PostDetailPageState
       case 0:
         return JobRequirementsPage();
       case 1:
+        return JobStatementPage();
         break;
       case 2:
+        return RecruitStorePage();
         break;
       case 3:
-        break;
-      default:
+        return InterviewInfoPage();
         break;
     }
   }
