@@ -18,28 +18,8 @@ class _MemberPageState extends State<MemberPage> {
           child: Stack(
             children: <Widget>[
               this.getSearchView(),
-              Positioned(
-                top: 55,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: ListView.builder(
-                  padding: EdgeInsets.all(10),
-                  itemCount: 50,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      padding: EdgeInsets.only(
-                        bottom: 10,
-                      ),
-                      child: Container(
-                        height: 158,
-                        child: Text('$index'),
-                        color: Colors.orange,
-                      ),
-                    );
-                  },
-                ),
-              ),
+              this.getSelectView(),
+              this.getListView(),
             ],
           ),
         ),
@@ -105,6 +85,30 @@ class _MemberPageState extends State<MemberPage> {
       padding: EdgeInsets.all(10),
       height: 55,
       color: Color(0xffea4c56),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              Icons.search,
+              color: Color(0xff626262),
+            ),
+            Text(
+              '搜索会员姓名或手机号',
+              style: TextStyle(color: Color(0xff626262)),
+            ),
+          ],
+        ),
+      ),
+    );
+    /*return Container(
+      padding: EdgeInsets.all(10),
+      height: 55,
+      color: Color(0xffea4c56),
       child: TextField(
         keyboardType: TextInputType.text,
         obscureText: false,
@@ -112,6 +116,7 @@ class _MemberPageState extends State<MemberPage> {
         cursorWidth: 2,
         cursorRadius: Radius.circular(1),
         autofocus: true,
+        textAlign: TextAlign.center,
         decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
@@ -124,9 +129,95 @@ class _MemberPageState extends State<MemberPage> {
           ),
         ),
         onChanged: (tx) {
-          print('$tx');
+          print('内容改变：$tx');
         },
+        onSubmitted: (tx){
+          print('内容提交：$tx');
+        },
+      ),
+    );
+    */
+  }
+
+  /// 筛选条
+  getSelectView() {
+    return Positioned(
+      top: 55,
+      left: 0,
+      right: 0,
+      height: 40,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Text('状态'),
+              Icon(Icons.arrow_drop_down),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              Text('招聘类型'),
+              Icon(Icons.arrow_drop_down),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              Text('更多筛选'),
+              Icon(Icons.arrow_drop_down),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// 列表
+  getListView() {
+    return Positioned(
+        top: 95,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        child: Container(
+          color: Color(0xffF1EEEE),
+          child: ListView.builder(
+            padding: EdgeInsets.all(10),
+            itemCount: 50,
+            itemBuilder: (context, index) {
+              return this.getListCellView(index);
+            },
+          ),
+        ));
+  }
+
+  /// 自定义cell
+  getListCellView(int index) {
+    return Container(
+      padding: EdgeInsets.only(
+        bottom: 10,
+      ),
+      // decoration: BoxDecoration(
+      //   color: Colors.white,
+      // ),
+      child: Container(
+        height: 158,
+        decoration: BoxDecoration(
+          color: Colors.white,
+        ),
+        child: Text('$index'),
       ),
     );
   }
 }
+/* return Container(
+                padding: EdgeInsets.only(
+                  bottom: 10,
+                ),
+                child: Container(
+                  height: 158,
+                  child: Text('$index'),
+                  color: Colors.orange,
+                ),
+              );
+*/
