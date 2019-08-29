@@ -60,7 +60,7 @@ class _GalleryPageState extends State<GalleryPage> {
           Container(
             padding: EdgeInsets.all(20),
             child: Text(
-              '$_currentIndex/${_images.length}',
+              '${_currentIndex + 1 }/${_images.length}',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 13,
