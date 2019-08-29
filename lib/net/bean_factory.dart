@@ -1,4 +1,5 @@
 
+import 'package:flutter_bd/model/AccountBean.dart';
 import 'package:flutter_bd/model/example.dart';
 import 'package:flutter_bd/model/userInfo.dart';
 import 'package:flutter_bd/model/userLoginInfo.dart';
@@ -13,6 +14,8 @@ class BeanFactory {
         return UserLoginInfo.fromJson(json);
         case 'UserInfo':
         return UserInfo.fromJson(json);
+      case 'AccountBean':
+        return AccountBean.fromJson(json);
       default:
         return null;
     }

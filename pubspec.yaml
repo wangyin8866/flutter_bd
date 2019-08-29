@@ -27,7 +27,7 @@ dependencies:
   shared_preferences: ^0.5.3+4
   dio: ^2.1.13
   flutter_calendar_carousel: ^1.3.18
-  oktoast: ^2.1.9
+  oktoast: ^2.2.0
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +53,7 @@ flutter:
     - images/icon_activity.png
     - images/icon_message.png
     - images/icon_setting.png
+    - images/icon_jlj.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

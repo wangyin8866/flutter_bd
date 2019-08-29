@@ -27,7 +27,7 @@ class NetWrapper {
           options: Options(method: method),
           cancelToken: cancelToken);
       if (response?.statusCode == 200) {
-        print('response--->$response.data');
+        print('response--->${response.data}');
         var bean = BeanFactory.wrapperBean<T>(response.data);
         if (bean == null) {
           print('bean为空');
