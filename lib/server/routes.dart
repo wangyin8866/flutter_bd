@@ -38,3 +38,4 @@ var onGenerateRoute = (settings) {
     }
   }
 };
+
