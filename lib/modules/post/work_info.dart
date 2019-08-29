@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bd/server/routes.dart';
 
 class WorkInfoPage extends StatefulWidget {
   @override
@@ -183,7 +184,9 @@ class _WorkInfoPageState extends State<WorkInfoPage> {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5), color: Colors.green),
         ),
-        onTap: () {},
+        onTap: () {
+            Navigator.pushNamed(context, galleryRoutesName);
+        },
       ),
     );
   }
