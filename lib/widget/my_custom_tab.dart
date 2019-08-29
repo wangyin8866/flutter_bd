@@ -25,14 +25,24 @@ class MyCustomTabState extends State<MyCustomTab> {
         height: 55,
         child: Row(
           children: <Widget>[
-            Image.asset(widget.imgPath),
+            SizedBox(width: 30),
+            Image.asset(
+              widget.imgPath,
+              width: 17,
+              height: 17,
+              fit: BoxFit.cover,
+            ),
+            SizedBox(width: 26),
             Text(widget.content,
                 style: TextStyle(fontSize: 14, color: Color(0xFF282828))),
             Expanded(
+                flex: 1,
                 child: Text(
-              ">",
-              style: TextStyle(color: Color(0xFF282828), fontSize: 14),
-            ))
+                  ">",
+                  style: TextStyle(color: Color(0xFF282828), fontSize: 14),
+                  textAlign: TextAlign.right,
+                )),
+            SizedBox(width: 29),
           ],
         ),
       ),
