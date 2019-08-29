@@ -1,4 +1,7 @@
+import 'dart:ui' as prefix0;
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bd/modules/base/base_state_page.dart';
 import 'package:flutter_bd/modules/post/interview_info.dart';
 import 'package:flutter_bd/modules/post/job_requirements.dart';
@@ -48,6 +51,9 @@ class _PostDetailPageState
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration(milliseconds: 100)).then((_){
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+    });
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -55,6 +61,7 @@ class _PostDetailPageState
         controller: _scrollController,
         slivers: <Widget>[
           SliverAppBar(
+            brightness: Brightness.light,
             backgroundColor: Colors.white,
             pinned: true,
             expandedHeight: 140,

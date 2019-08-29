@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,6 +11,11 @@ void main() {
     runApp(MyApp());
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    if (Platform.isAndroid) {
+      SystemUiOverlayStyle systemUiOverlayStyle =
+          SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+      SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+    }
   }, onError: (Object obj, StackTrace stack) {
     print(obj);
     print(stack);

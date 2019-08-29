@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bd/model/AccountBean.dart';
 import 'package:flutter_bd/modules/base/base_mvp.dart';
@@ -25,6 +27,8 @@ class _MinePageState extends BasePageState<MinePage, MinePresenter> {
   //选中的数据
   int _postion = 0;
 
+  double _statusHeight = 0;
+
   @override
   void showSuccess(BaseBean response) {
     super.showSuccess(response);
@@ -43,25 +47,28 @@ class _MinePageState extends BasePageState<MinePage, MinePresenter> {
 
   @override
   Widget build(BuildContext context) {
+    _statusHeight =  MediaQuery.of(context).padding.top;
     return Scaffold(
       body: SafeArea(
+          top: false,
+          bottom: true,
           child: Container(
-        width: double.infinity,
-        height: double.infinity,
-        child: SingleChildScrollView(
-          child: Stack(
-            children: <Widget>[
-              Column(
+            width: double.infinity,
+            height: double.infinity,
+            child: SingleChildScrollView(
+              child: Stack(
                 children: <Widget>[
-                  topCardWidget(),
-                  bottomWidget(),
+                  Column(
+                    children: <Widget>[
+                      topCardWidget(),
+                      bottomWidget(),
+                    ],
+                  ),
+                  centerCardWidget()
                 ],
               ),
-              centerCardWidget()
-            ],
-          ),
-        ),
-      )),
+            ),
+          )),
     );
   }
 
@@ -76,7 +83,7 @@ class _MinePageState extends BasePageState<MinePage, MinePresenter> {
       child: Column(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 23, 30, 0),
+            padding: EdgeInsets.fromLTRB(0, 23 + _statusHeight, 30, 0),
             child: Align(
               alignment: Alignment.topRight,
               child: Image.asset(
@@ -217,7 +224,7 @@ class _MinePageState extends BasePageState<MinePage, MinePresenter> {
 
   Widget centerCardWidget() {
     return Positioned(
-        top: 145,
+        top: 145 + _statusHeight,
         right: 18,
         left: 20,
         child: Container(
@@ -361,7 +368,7 @@ class _MinePageState extends BasePageState<MinePage, MinePresenter> {
 
   Widget bottomWidget() {
     return Container(
-      margin: EdgeInsets.fromLTRB(0, 160, 0, 0),
+      margin: EdgeInsets.fromLTRB(0, 160 + _statusHeight, 0, 0),
       child: Column(
         children: <Widget>[
           MyCustomTab(
