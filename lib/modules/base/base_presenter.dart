@@ -6,6 +6,7 @@ import 'package:flutter_bd/net/constant.dart';
 import 'package:flutter_bd/net/net.dart';
 import 'package:flutter_bd/server/routes.dart';
 import 'package:flutter_bd/tools/storage.dart';
+
 import 'base_mvp.dart';
 
 class BasePresenter<V extends BaseView> extends IPresenter {

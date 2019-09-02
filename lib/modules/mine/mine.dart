@@ -1,6 +1,15 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bd/model/AccountBean.dart';
+import 'package:flutter_bd/modules/base/base_mvp.dart';
+import 'package:flutter_bd/modules/base/base_state_page.dart';
+import 'package:flutter_bd/tools/singleton.dart';
 import 'package:flutter_bd/widget/my_custom_tab.dart';
 import 'package:flutter_bd/widget/my_custom_text.dart';
+import 'package:oktoast/oktoast.dart';
+
+import 'mine_presenter.dart';
 
 class MinePage extends StatefulWidget {
   MinePage({Key key}) : super(key: key);
@@ -8,28 +17,58 @@ class MinePage extends StatefulWidget {
   _MinePageState createState() => _MinePageState();
 }
 
-class _MinePageState extends State<MinePage> {
+class _MinePageState extends BasePageState<MinePage, MinePresenter> {
+  //今日数据的字体颜色
+  int _color_one = 0xFFD61A1A;
+
+  //团队数据的字体颜色
+  int _color_two = 0xFF4A4C5B;
+
+  //选中的数据
+  int _postion = 0;
+
+  double _statusHeight = 0;
+
+  @override
+  void showSuccess(BaseBean response) {
+    super.showSuccess(response);
+    if (response is AccountBean) {
+      showToast(response.msg);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    print("mine");
+
+    mPresenter.requestAccount<AccountBean>();
+  }
+
   @override
   Widget build(BuildContext context) {
+    _statusHeight =  MediaQuery.of(context).padding.top;
     return Scaffold(
       body: SafeArea(
+          top: false,
+          bottom: true,
           child: Container(
-        width: double.infinity,
-        height: double.infinity,
-        child: SingleChildScrollView(
-          child: Stack(
-            children: <Widget>[
-              Column(
+            width: double.infinity,
+            height: double.infinity,
+            child: SingleChildScrollView(
+              child: Stack(
                 children: <Widget>[
-                  topCardWidget(),
-                  bottomWidget(),
+                  Column(
+                    children: <Widget>[
+                      topCardWidget(),
+                      bottomWidget(),
+                    ],
+                  ),
+                  centerCardWidget()
                 ],
               ),
-              centerCardWidget()
-            ],
-          ),
-        ),
-      )),
+            ),
+          )),
     );
   }
 
@@ -44,7 +83,7 @@ class _MinePageState extends State<MinePage> {
       child: Column(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 23, 30, 0),
+            padding: EdgeInsets.fromLTRB(0, 23 + _statusHeight, 30, 0),
             child: Align(
               alignment: Alignment.topRight,
               child: Image.asset(
@@ -65,8 +104,8 @@ class _MinePageState extends State<MinePage> {
                         borderRadius: BorderRadius.circular(35)),
                     width: 70,
                     height: 70,
-                    child: Image.asset(
-                      "images/but_weixin_login.png",
+                    child: Image.network(
+                      SingletonManager().userInfo.data.imPortrait,
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -76,7 +115,7 @@ class _MinePageState extends State<MinePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text("小慧慧",
+                        Text(SingletonManager().userInfo.data.name,
                             style: TextStyle(
                                 color: Color(0xFFFFFFFF),
                                 fontSize: 23,
@@ -87,7 +126,7 @@ class _MinePageState extends State<MinePage> {
                         Row(
                           children: <Widget>[
                             Text(
-                              "176 0215 614",
+                              SingletonManager().userInfo.data.mobile,
                               style: TextStyle(
                                   color: Color(0xFFFFFFFF),
                                   fontSize: 14,
@@ -127,7 +166,7 @@ class _MinePageState extends State<MinePage> {
                             child: Row(
                               children: <Widget>[
                                 Image.asset(
-                                  "images/but_weixin_login.png",
+                                  "images/icon_jlj.png",
                                   fit: BoxFit.contain,
                                   width: 20,
                                   height: 20,
@@ -185,7 +224,7 @@ class _MinePageState extends State<MinePage> {
 
   Widget centerCardWidget() {
     return Positioned(
-        top: 145,
+        top: 145 + _statusHeight,
         right: 18,
         left: 20,
         child: Container(
@@ -208,13 +247,21 @@ class _MinePageState extends State<MinePage> {
                     flex: 1,
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(0, 17, 0, 9),
-                      child: Text(
-                        "个人今日数据",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Color(0xFFD61A1A),
-                            fontSize: 13,
-                            fontWeight: FontWeight.w600),
+                      child: GestureDetector(
+                        child: Text(
+                          "个人今日数据",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Color(_color_one),
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        onTap: () {
+                          setState(() {
+                            _color_one = 0xFFD61A1A;
+                            _color_two = 0xFF4A4C5B;
+                          });
+                        },
                       ),
                     ),
                   ),
@@ -227,13 +274,21 @@ class _MinePageState extends State<MinePage> {
                     flex: 1,
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(0, 17, 0, 9),
-                      child: Text(
-                        "团队今日数据",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Color(0xFF4A4C5B),
-                            fontSize: 13,
-                            fontWeight: FontWeight.w600),
+                      child: GestureDetector(
+                        child: Text(
+                          "团队今日数据",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Color(_color_two),
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        onTap: () {
+                          setState(() {
+                            _color_one = 0xFF4A4C5B;
+                            _color_two = 0xFFD61A1A;
+                          });
+                        },
                       ),
                     ),
                   )
@@ -292,13 +347,14 @@ class _MinePageState extends State<MinePage> {
                     Expanded(child: SizedBox(), flex: 1),
                     Text(
                       "查看历史",
-                      style: TextStyle(color: Color(0xFF5D5D5D)),
+                      style: TextStyle(color: Color(0xFF5D5D5D), fontSize: 12),
                     ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(8, 0, 12, 0),
                       child: Text(
                         ">",
-                        style: TextStyle(color: Color(0xFF5D5D5D)),
+                        style:
+                            TextStyle(color: Color(0xFF5D5D5D), fontSize: 12),
                       ),
                     )
                   ],
@@ -312,15 +368,55 @@ class _MinePageState extends State<MinePage> {
 
   Widget bottomWidget() {
     return Container(
-      margin: EdgeInsets.fromLTRB(0, 440, 0, 0),
-      color: Color(0xffffffff),
+      margin: EdgeInsets.fromLTRB(0, 160 + _statusHeight, 0, 0),
       child: Column(
         children: <Widget>[
-          MyCustomTab(imgPath: "images/icon_activity.png",content: "我的二维码",onTap: (){
-
-          },)
+          MyCustomTab(
+              imgPath: "images/icon_activity.png",
+              content: "我的二维码",
+              onTap: () {
+                showToast("我的二维码");
+              }),
+          Container(
+            width: double.infinity,
+            height: 1,
+            color: Color(0xFFE8E8E8),
+          ),
+          MyCustomTab(
+              imgPath: "images/icon_message.png",
+              content: "我的消息",
+              onTap: () {
+                showToast("我的消息");
+              }),
+          Container(
+            width: double.infinity,
+            height: 1,
+            color: Color(0xFFE8E8E8),
+          ),
+          MyCustomTab(
+              imgPath: "images/icon_activity.png",
+              content: "金融活动",
+              onTap: () {
+                showToast("金融活动");
+              }),
+          Container(
+            width: double.infinity,
+            height: 1,
+            color: Color(0xFFE8E8E8),
+          ),
+          MyCustomTab(
+              imgPath: "images/icon_setting.png",
+              content: "设置",
+              onTap: () {
+                showToast("设置");
+              }),
         ],
       ),
     );
+  }
+
+  @override
+  MinePresenter createPresenter() {
+    return MinePresenter();
   }
 }

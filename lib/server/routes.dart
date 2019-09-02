@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bd/modules/login/login.dart';
+import 'package:flutter_bd/modules/post/gallery.dart';
 import 'package:flutter_bd/modules/post/post_detail.dart';
 import 'package:flutter_bd/modules/order/order_detail.dart';
 import 'package:flutter_bd/modules/schedule/schedule_detail.dart';
@@ -10,6 +11,7 @@ final tabbarRoutesName = '/tabbar';
 final postDetailRoutesName = '/postDetail';
 final orderDetailRoutesName = '/orderDetail';
 final scheduleDetailRoutesName = '/scheduleDetail';
+final galleryRoutesName = '/gallery';
 
 final routes = {
   loginRoutesName: (context) => LoginPage(),
@@ -18,6 +20,7 @@ final routes = {
   // '/orderDetail': (context, {arguments}) => orderDetailWidget(arguments: arguments),
   orderDetailRoutesName: (context) => OrderDetailPage(),
   scheduleDetailRoutesName: (context) => ScheduleDetailPage(),
+  galleryRoutesName: (context, {arguments}) => GalleryPage(),
 };
 
 var onGenerateRoute = (settings) {
@@ -38,3 +41,4 @@ var onGenerateRoute = (settings) {
     }
   }
 };
+
