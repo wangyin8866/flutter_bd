@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bd/modules/login/login.dart';
 import 'package:flutter_bd/modules/post/post_detail.dart';
-import 'package:flutter_bd/modules/order/orderDetail.dart';
-import 'package:flutter_bd/modules/schedule/scheduleDetail.dart';
+import 'package:flutter_bd/modules/order/order_detail.dart';
+import 'package:flutter_bd/modules/schedule/schedule_detail.dart';
 import 'package:flutter_bd/modules/tabbar/tabbar.dart';
 
 final loginRoutesName = '/';
