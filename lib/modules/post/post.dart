@@ -17,6 +17,7 @@ class PostPage extends StatefulWidget {
 }
 
 class _PostPageState extends BasePageState<PostPage, PostPresenter> {
+  double _screenWidth = 0;
   GZXDropdownMenuController _dropdownMenuController =
       GZXDropdownMenuController();
   GZXDropdownMenuController _controller = GZXDropdownMenuController();
@@ -28,6 +29,7 @@ class _PostPageState extends BasePageState<PostPage, PostPresenter> {
 
   @override
   Widget build(BuildContext context) {
+    _screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Color(0xFFF1EEEE),
       appBar: AppBar(
@@ -132,15 +134,14 @@ class _PostPageState extends BasePageState<PostPage, PostPresenter> {
         onTap: () {},
         child: Padding(
             padding: EdgeInsets.only(left: 12, right: 8),
-            child: Icon(Icons.info)),
+            child: Icon(Icons.info, size: 24,)),
       ),
       GestureDetector(
         onTap: () {
-          mPresenter?.requestLogin('12334', '123213123');
         },
         child: Padding(
             padding: EdgeInsets.only(left: 8, right: 8),
-            child: Icon(Icons.info)),
+            child: Icon(Icons.info, size: 24,)),
       )
     ];
   }
@@ -152,7 +153,7 @@ class _PostPageState extends BasePageState<PostPage, PostPresenter> {
         onTap: () {},
         child: Container(
           height: 30,
-          width: 186,
+          width: _screenWidth - 172,
           decoration: BoxDecoration(
               color: Color(0xFFF7F7F7),
               borderRadius: BorderRadius.circular(5.0)),
@@ -174,7 +175,7 @@ class _PostPageState extends BasePageState<PostPage, PostPresenter> {
     return Container(
       color: Colors.white,
       child: Padding(
-        padding: EdgeInsets.only(left: 5),
+        padding: EdgeInsets.only(left: 0),
         child: GZXDropDownHeader(
           stackKey: _stackKey,
           items: [

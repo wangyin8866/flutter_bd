@@ -51,7 +51,7 @@ class _PostDetailPageState
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(milliseconds: 100)).then((_){
+    Future.delayed(Duration(milliseconds: 300)).then((_){
       SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     });
     return Scaffold(
