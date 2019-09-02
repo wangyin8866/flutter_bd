@@ -73,17 +73,17 @@ class _PostPageState extends BasePageState<PostPage, PostPresenter> {
               dropDownWidget: RecruitmentInfoDialog((one, two, three) {
                 _dropdownMenuController.hide();
               }),
-              dropDownHeight: 370),
+              dropDownHeight: 373),
           GZXDropdownMenuBuilder(
               dropDownWidget: LifeRestDialog((one, two, three) {
                 _dropdownMenuController.hide();
               }),
-              dropDownHeight: 440),
+              dropDownHeight: 449),
           GZXDropdownMenuBuilder(
               dropDownWidget: JobRequireDialog((gender, school, minAge, maxAge) {
                 _dropdownMenuController.hide();
               }),
-              dropDownHeight: 380)
+              dropDownHeight: 382)
         ]);
   }
 
