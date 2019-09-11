@@ -8,7 +8,7 @@
          FlutterApplication and put your custom class here. -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:name="io.flutter.app.FlutterApplication"
+        android:name=".BaseApplication"
         android:label="flutter_bd"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -31,5 +31,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".TestActivity" />
+
+        <!--百度地图-->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="Q81M9j6LBsukoKE5Zv0KuZwxspioi2Ur"/>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"/>
     </application>
 </manifest>

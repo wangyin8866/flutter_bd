@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bd/tools/custom_widgets.dart';
@@ -50,8 +52,17 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
 
   Widget _mapWidget() {
     return Container(
-      child: UiKitView(viewType: 'mapView'),
+      child: _whichPlatform(),
     );
+  }
+
+  Widget _whichPlatform() {
+    if (Platform.isAndroid) {
+      return AndroidView(viewType: 'com.shurenzhipin.flutter_bd.mapwidget.MapView');
+    } else if (Platform.isIOS) {
+      return UiKitView(viewType: 'mapView');
+    }
+    return null;
   }
 
   Widget _mainWidget() {
