@@ -17,7 +17,6 @@ final routes = {
   loginRoutesName: (context) => LoginPage(),
   tabbarRoutesName: (context) => TabbarWidget(),
   postDetailRoutesName: (context, {arguments}) => PostDetailPage(),
-  // '/orderDetail': (context, {arguments}) => orderDetailWidget(arguments: arguments),
   orderDetailRoutesName: (context) => OrderDetailPage(),
   scheduleDetailRoutesName: (context) => ScheduleDetailPage(),
   galleryRoutesName: (context, {arguments}) => GalleryPage(),
@@ -28,8 +27,6 @@ var onGenerateRoute = (settings) {
   final Function pageContentBuilder = routes[name];
   if (pageContentBuilder != null) {
     if (settings.arguments != null) {
-
-
       final Route route = MaterialPageRoute(
           builder: (context) =>
               pageContentBuilder(context, arguments: settings.arguments));

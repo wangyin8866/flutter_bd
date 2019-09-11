@@ -17,7 +17,7 @@ class LoginPresenter extends BasePresenter {
   }
 
   requestUserInfo<T>() {
-    invoke<T>(UrlPath.userInfo, method: NetConstant.GET, isShowLoading: true);
+    invoke<T>(UrlPath.userInfo, method: NetConstant.GET, isShowLoading: false);
   }
 
 }

@@ -68,11 +68,14 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
           ],
         ),
         SizedBox(height: 13),
-        Text(
-          '现在此人员家里有点事情，发生了突发情况所以需要找工作。',
-          style: TextStyle(
-            fontSize: 14,
-            color: Color(0xff030303),
+        Padding(
+          padding: EdgeInsets.only(left: 19, right: 19),
+          child: Text(
+            '现在此人员家里有点事情，发生了突发情况所以需要找工作。',
+            style: TextStyle(
+              fontSize: 14,
+              color: Color(0xff030303),
+            ),
           ),
         ),
       ],

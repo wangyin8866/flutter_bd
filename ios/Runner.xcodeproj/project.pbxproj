@@ -11,6 +11,26 @@
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		3B80C3941E831B6300D905FE /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; };
 		3B80C3951E831B6300D905FE /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		46163D542327818A007902DB /* BaiduMapAPI_Map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D4D2327818A007902DB /* BaiduMapAPI_Map.framework */; };
+		46163D552327818A007902DB /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D4F2327818A007902DB /* libcrypto.a */; };
+		46163D562327818A007902DB /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D502327818A007902DB /* libssl.a */; };
+		46163D572327818A007902DB /* BaiduMapAPI_Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D512327818A007902DB /* BaiduMapAPI_Utils.framework */; };
+		46163D582327818A007902DB /* BaiduMapAPI_Base.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D522327818A007902DB /* BaiduMapAPI_Base.framework */; };
+		46163D592327818A007902DB /* BaiduMapAPI_Search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D532327818A007902DB /* BaiduMapAPI_Search.framework */; };
+		46163D5B232782D2007902DB /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D5A232782D2007902DB /* AdSupport.framework */; };
+		46163D5D232782E0007902DB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D5C232782E0007902DB /* SystemConfiguration.framework */; };
+		46163D5F232782E8007902DB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D5E232782E8007902DB /* Security.framework */; };
+		46163D61232782F2007902DB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D60232782F1007902DB /* QuartzCore.framework */; };
+		46163D63232782FD007902DB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D62232782FD007902DB /* OpenGLES.framework */; };
+		46163D6523278305007902DB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D6423278305007902DB /* MobileCoreServices.framework */; };
+		46163D6723278312007902DB /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D6623278312007902DB /* libsqlite3.0.tbd */; };
+		46163D692327831F007902DB /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D682327831F007902DB /* libc++.tbd */; };
+		46163D6B23278330007902DB /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D6A23278330007902DB /* CoreTelephony.framework */; };
+		46163D6D2327833F007902DB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D6C2327833F007902DB /* CoreLocation.framework */; };
+		46163D6F2327834A007902DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D6E23278349007902DB /* CoreGraphics.framework */; };
+		46163D71232784D8007902DB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46163D70232784D8007902DB /* MapView.swift */; };
+		46163D7323278765007902DB /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46163D7223278765007902DB /* mapapi.bundle */; };
+		46163D75232787DA007902DB /* BMKLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46163D74232787DA007902DB /* BMKLocationKit.framework */; };
 		703B618B9347BFC373C627EA /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 909336242AAE84C209B0D0EF /* Pods_Runner.framework */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		9705A1C61CF904A100538489 /* Flutter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9740EEBA1CF902C7004384FC /* Flutter.framework */; };
@@ -42,6 +62,26 @@
 		15039DC5B952F441929BC2E3 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		3B80C3931E831B6300D905FE /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = App.framework; path = Flutter/App.framework; sourceTree = "<group>"; };
+		46163D4D2327818A007902DB /* BaiduMapAPI_Map.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Map.framework; sourceTree = "<group>"; };
+		46163D4F2327818A007902DB /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		46163D502327818A007902DB /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		46163D512327818A007902DB /* BaiduMapAPI_Utils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Utils.framework; sourceTree = "<group>"; };
+		46163D522327818A007902DB /* BaiduMapAPI_Base.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Base.framework; sourceTree = "<group>"; };
+		46163D532327818A007902DB /* BaiduMapAPI_Search.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Search.framework; sourceTree = "<group>"; };
+		46163D5A232782D2007902DB /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		46163D5C232782E0007902DB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		46163D5E232782E8007902DB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		46163D60232782F1007902DB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		46163D62232782FD007902DB /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		46163D6423278305007902DB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		46163D6623278312007902DB /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		46163D682327831F007902DB /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		46163D6A23278330007902DB /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		46163D6C2327833F007902DB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		46163D6E23278349007902DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		46163D70232784D8007902DB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		46163D7223278765007902DB /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = Runner/BaiduMap_IOSSDK_Lib/BaiduMapAPI_Map.framework/mapapi.bundle; sourceTree = "<group>"; };
+		46163D74232787DA007902DB /* BMKLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BMKLocationKit.framework; sourceTree = "<group>"; };
 		56FB58EF437D5D417A0DA516 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,9 +103,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46163D6F2327834A007902DB /* CoreGraphics.framework in Frameworks */,
+				46163D6D2327833F007902DB /* CoreLocation.framework in Frameworks */,
+				46163D6B23278330007902DB /* CoreTelephony.framework in Frameworks */,
+				46163D692327831F007902DB /* libc++.tbd in Frameworks */,
+				46163D75232787DA007902DB /* BMKLocationKit.framework in Frameworks */,
+				46163D6723278312007902DB /* libsqlite3.0.tbd in Frameworks */,
+				46163D6523278305007902DB /* MobileCoreServices.framework in Frameworks */,
+				46163D63232782FD007902DB /* OpenGLES.framework in Frameworks */,
+				46163D61232782F2007902DB /* QuartzCore.framework in Frameworks */,
+				46163D5F232782E8007902DB /* Security.framework in Frameworks */,
+				46163D5D232782E0007902DB /* SystemConfiguration.framework in Frameworks */,
+				46163D5B232782D2007902DB /* AdSupport.framework in Frameworks */,
 				9705A1C61CF904A100538489 /* Flutter.framework in Frameworks */,
+				46163D552327818A007902DB /* libcrypto.a in Frameworks */,
+				46163D562327818A007902DB /* libssl.a in Frameworks */,
 				3B80C3941E831B6300D905FE /* App.framework in Frameworks */,
 				703B618B9347BFC373C627EA /* Pods_Runner.framework in Frameworks */,
+				46163D582327818A007902DB /* BaiduMapAPI_Base.framework in Frameworks */,
+				46163D542327818A007902DB /* BaiduMapAPI_Map.framework in Frameworks */,
+				46163D572327818A007902DB /* BaiduMapAPI_Utils.framework in Frameworks */,
+				46163D592327818A007902DB /* BaiduMapAPI_Search.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +138,27 @@
 				F1C8BAA015AA71B48F1D06C4 /* Pods-Runner.profile.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		46163D4C2327818A007902DB /* BaiduMap_IOSSDK_Lib */ = {
+			isa = PBXGroup;
+			children = (
+				46163D4D2327818A007902DB /* BaiduMapAPI_Map.framework */,
+				46163D4E2327818A007902DB /* thirdlibs */,
+				46163D512327818A007902DB /* BaiduMapAPI_Utils.framework */,
+				46163D522327818A007902DB /* BaiduMapAPI_Base.framework */,
+				46163D532327818A007902DB /* BaiduMapAPI_Search.framework */,
+			);
+			path = BaiduMap_IOSSDK_Lib;
+			sourceTree = "<group>";
+		};
+		46163D4E2327818A007902DB /* thirdlibs */ = {
+			isa = PBXGroup;
+			children = (
+				46163D4F2327818A007902DB /* libcrypto.a */,
+				46163D502327818A007902DB /* libssl.a */,
+			);
+			path = thirdlibs;
 			sourceTree = "<group>";
 		};
 		9740EEB11CF90186004384FC /* Flutter */ = {
@@ -98,6 +177,8 @@
 		97C146E51CF9000F007C117D = {
 			isa = PBXGroup;
 			children = (
+				46163D74232787DA007902DB /* BMKLocationKit.framework */,
+				46163D7223278765007902DB /* mapapi.bundle */,
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
 				97C146EF1CF9000F007C117D /* Products */,
@@ -117,6 +198,7 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				46163D4C2327818A007902DB /* BaiduMap_IOSSDK_Lib */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
 				97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */,
@@ -125,6 +207,7 @@
 				1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */,
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
+				46163D70232784D8007902DB /* MapView.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
 			);
 			path = Runner;
@@ -140,6 +223,17 @@
 		B652C71F2EA676CF3FAF8027 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				46163D6E23278349007902DB /* CoreGraphics.framework */,
+				46163D6C2327833F007902DB /* CoreLocation.framework */,
+				46163D6A23278330007902DB /* CoreTelephony.framework */,
+				46163D682327831F007902DB /* libc++.tbd */,
+				46163D6623278312007902DB /* libsqlite3.0.tbd */,
+				46163D6423278305007902DB /* MobileCoreServices.framework */,
+				46163D62232782FD007902DB /* OpenGLES.framework */,
+				46163D60232782F1007902DB /* QuartzCore.framework */,
+				46163D5E232782E8007902DB /* Security.framework */,
+				46163D5C232782E0007902DB /* SystemConfiguration.framework */,
+				46163D5A232782D2007902DB /* AdSupport.framework */,
 				909336242AAE84C209B0D0EF /* Pods_Runner.framework */,
 			);
 			name = Frameworks;
@@ -181,7 +275,7 @@
 				TargetAttributes = {
 					97C146ED1CF9000F007C117D = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = W99X66XLDG;
+						DevelopmentTeam = L23UTR246S;
 						LastSwiftMigration = 0910;
 					};
 				};
@@ -209,6 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46163D7323278765007902DB /* mapapi.bundle in Resources */,
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				9740EEB41CF90195004384FC /* Debug.xcconfig in Resources */,
@@ -294,6 +389,7 @@
 			files = (
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
+				46163D71232784D8007902DB /* MapView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,19 +471,31 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = W99X66XLDG;
+				DEVELOPMENT_TEAM = L23UTR246S;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Runner/BaiduMap_IOSSDK_Lib",
 				);
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)/Runner/BaiduMap_IOSSDK_Lib/thirdlibs",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shurenzhipin.flutterBd;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Flutter\"",
+					"-framework",
+					"\"shared_preferences\"",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xinrenlei.koubeigongzuobd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -509,19 +617,31 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = W99X66XLDG;
+				DEVELOPMENT_TEAM = L23UTR246S;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Runner/BaiduMap_IOSSDK_Lib",
 				);
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)/Runner/BaiduMap_IOSSDK_Lib/thirdlibs",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shurenzhipin.flutterBd;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Flutter\"",
+					"-framework",
+					"\"shared_preferences\"",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xinrenlei.koubeigongzuobd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -538,19 +658,31 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = W99X66XLDG;
+				DEVELOPMENT_TEAM = L23UTR246S;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Runner/BaiduMap_IOSSDK_Lib",
 				);
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)/Runner/BaiduMap_IOSSDK_Lib/thirdlibs",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shurenzhipin.flutterBd;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Flutter\"",
+					"-framework",
+					"\"shared_preferences\"",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xinrenlei.koubeigongzuobd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;

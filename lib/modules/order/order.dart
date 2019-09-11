@@ -290,7 +290,6 @@ class _OrderPageState extends BasePageState<OrderPage, LoginPresenter>
                           ),
                           onPressed: () {
                             print('确认');
-                            Navigator.pushNamed(context, orderDetailRoutesName);
                           },
                         ),
                       ),
@@ -301,7 +300,7 @@ class _OrderPageState extends BasePageState<OrderPage, LoginPresenter>
             ),
           ),
           onTap: () {
-            print(index);
+            Navigator.pushNamed(context, orderDetailRoutesName);
           },
         ),
         SizedBox(height: 10),
@@ -355,7 +354,7 @@ class _OrderPageState extends BasePageState<OrderPage, LoginPresenter>
                         print('call---$index');
                       },
                     ),
-                    SizedBox(width: 114),
+                    Expanded(child: Container()),
                   ],
                 ),
                 SizedBox(height: 10),
@@ -488,7 +487,7 @@ class _OrderPageState extends BasePageState<OrderPage, LoginPresenter>
             ),
           ),
           onTap: () {
-            print(index);
+            Navigator.pushNamed(context, orderDetailRoutesName);
           },
         ),
         SizedBox(height: 10),
