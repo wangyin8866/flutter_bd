@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="RectCircleImageView">
+        <attr name="rect_type" format="enum">
+            <enum name="circle" value="0" />
+            <enum name="round" value="1" />
+        </attr>
+        <attr name="rect_round_Radius" format="dimension" />
+        <attr name="rect_border_width" format="dimension" />
+        <attr name="rect_border_color" format="color" />
+    </declare-styleable>
+
+
+</resources>
