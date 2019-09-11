@@ -8,6 +8,8 @@ package com.shurenzhipin.flutter_bd.mapwidget;
 
 public interface IView {
 
+    void initLoaction();
+
     void moveToCenter();
 
 }
