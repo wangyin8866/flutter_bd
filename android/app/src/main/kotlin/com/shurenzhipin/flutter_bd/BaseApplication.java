@@ -5,6 +5,7 @@ import com.baidu.mapapi.SDKInitializer;
 
 public class BaseApplication extends io.flutter.app.FlutterApplication {
 
+
     @Override
     public void onCreate() {
         super.onCreate();
