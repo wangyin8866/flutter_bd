@@ -10,6 +10,10 @@ import com.baidu.mapapi.model.LatLng;
 
 public interface IView {
 
+    void onResumed();
+
+    void onPaused();
+
     void initLoaction();
 
     void moveToCenter(LatLng latLng, boolean defalutZoom);

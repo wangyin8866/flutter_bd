@@ -22,6 +22,7 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
+import com.blankj.utilcode.util.LogUtils;
 import com.shurenzhipin.flutter_bd.R;
 
 import java.util.Map;
@@ -43,7 +44,7 @@ public class MapViewWidget implements PlatformView, IView {
     private LocationClient mLocationClient;
     private BitmapDescriptor mCurrentMarker = BitmapDescriptorFactory.fromResource(R.drawable.icon_current_marker);
     private SensorManager mSensorManager;
-
+    private SensorEventListenerImpl sensorEventListener;
 
 
     private boolean isFirstLoc = true;
@@ -63,6 +64,12 @@ public class MapViewWidget implements PlatformView, IView {
             switch (methodCall.method) {
                 case ConstantChannel.moveToCenter:
                     moveToCenter(new LatLng(latitude, longitude), true);
+                    break;
+                case ConstantChannel.onResumed:
+                    onResumed();
+                    break;
+                case ConstantChannel.onPaused:
+                    onPaused();
                     break;
                     default:
                         break;
@@ -87,17 +94,18 @@ public class MapViewWidget implements PlatformView, IView {
         }
 
         mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+        sensorEventListener = new SensorEventListenerImpl();
+
+        //为系统注册传感器监听
+        mSensorManager.registerListener(
+                sensorEventListener,
+                mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
+                SensorManager.SENSOR_DELAY_UI
+        );
 
         initLoaction();
 
         initInvokeChannel(messenger);
-
-        //为系统注册传感器监听
-        mSensorManager.registerListener(
-                new SensorEventListenerImpl(),
-                mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
-                SensorManager.SENSOR_DELAY_UI
-        );
     }
 
     @Override
@@ -107,7 +115,28 @@ public class MapViewWidget implements PlatformView, IView {
 
     @Override
     public void dispose() {
+        LogUtils.e("mapView---->dispose");
+        mMapView.onDestroy();
+        mLocationClient.stop();
+    }
 
+    @Override
+    public void onResumed() {
+        LogUtils.e("mapView---->onResumed");
+        mMapView.onResume();
+        //为系统注册传感器监听
+        mSensorManager.registerListener(
+                sensorEventListener,
+                mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
+                SensorManager.SENSOR_DELAY_UI
+        );
+    }
+
+    @Override
+    public void onPaused() {
+        LogUtils.e("mapView---->onPaused");
+        mMapView.onPause();
+        mSensorManager.unregisterListener(sensorEventListener);
     }
 
     @Override
@@ -149,7 +178,7 @@ public class MapViewWidget implements PlatformView, IView {
             LatLng originLatLng = mBaiduMap.getProjection().fromScreenLocation(new Point(0, 0));
             double offsetLatitude = (originLatLng.latitude - latLng.latitude) / 2;
             LatLng ll1 = new LatLng(latLng.latitude - offsetLatitude, longitude);
-            mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(new MapStatus.Builder().target(ll1).zoom(17.0f).build()));
+            mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(new MapStatus.Builder().target(ll1).zoom(17.0f).build()));
 
         }, 300);
     }

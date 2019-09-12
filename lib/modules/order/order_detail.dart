@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bd/config/config.dart';
 import 'package:flutter_bd/tools/custom_widgets.dart';
 
 class OrderDetailPage extends StatefulWidget {
@@ -10,9 +11,38 @@ class OrderDetailPage extends StatefulWidget {
   _OrderDetailPageState createState() => _OrderDetailPageState();
 }
 
-class _OrderDetailPageState extends State<OrderDetailPage> {
+class _OrderDetailPageState extends State<OrderDetailPage> with WidgetsBindingObserver {
 
   final MethodChannel _channel = const MethodChannel('bd.flutter.io/map');
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    switch (state) {
+      case AppLifecycleState.inactive:// for iOS
+        break;
+      case AppLifecycleState.resumed://for Android
+        _channel.invokeListMethod(MethodName.onResumed);
+        break;
+      case AppLifecycleState.paused://for Android
+        _channel.invokeListMethod(MethodName.onPaused);
+        break;
+      case AppLifecycleState.suspending:
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +117,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                   size: 35,
                 ),
                 onPressed: () {
-                  _channel.invokeListMethod('moveToCenter');
+                  _channel.invokeListMethod(MethodName.moveToCenter);
                 },
               )
             ],

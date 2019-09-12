@@ -9,6 +9,9 @@ package com.shurenzhipin.flutter_bd.mapwidget;
 public class ConstantChannel {
 
     public static final String moveToCenter = "moveToCenter";
+    public static final String onResumed = "onResumed";
+    public static final String onPaused = "onPaused";
+
 
 
 }
