@@ -14,7 +14,7 @@ class MapView: NSObject, FlutterPlatformView {
     let viewId: Int64;
     var messenger: FlutterBinaryMessenger!
     lazy var mapView: BMKMapView = {
-        let mapView = BMKMapView(frame: frame)
+        let mapView = BMKMapView(frame: UIScreen.main.bounds)
         mapView.showsUserLocation = true
         mapView.userTrackingMode = BMKUserTrackingModeHeading
         mapView.zoomLevel = 16
@@ -55,7 +55,11 @@ class MapView: NSObject, FlutterPlatformView {
         locationManager.startUpdatingLocation()
         locationManager.startUpdatingHeading()
         
-        return mapView
+        let v = UIView(frame: frame)
+        v.backgroundColor = .cyan
+        v.addSubview(mapView)
+        
+        return v
     }
     
     func mapViewWillDisappear() {
@@ -64,7 +68,7 @@ class MapView: NSObject, FlutterPlatformView {
     
     func updateMap() {
         mapView.updateLocationData(userLocation)
-        mapView.setMapCenterToScreenPt(CGPoint(x: mapView.center.x, y: (mapView.center.y) - 150))
+        mapView.setMapCenterToScreenPt(CGPoint(x: mapView.center.x, y: (mapView.center.y) - 180))
         mapView.zoomLevel = 16
         if userLocation?.location == nil {
             return
