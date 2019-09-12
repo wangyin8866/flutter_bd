@@ -96,14 +96,14 @@ public class MapViewWidget implements PlatformView, IView {
         mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         sensorEventListener = new SensorEventListenerImpl();
 
+        initLoaction();
+
         //为系统注册传感器监听
         mSensorManager.registerListener(
                 sensorEventListener,
                 mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
                 SensorManager.SENSOR_DELAY_UI
         );
-
-        initLoaction();
 
         initInvokeChannel(messenger);
     }
