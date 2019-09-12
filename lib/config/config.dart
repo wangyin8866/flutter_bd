@@ -17,3 +17,13 @@ class UrlPath {
   static const String get_account = '$serverVersion/bd/account/get_account';
 
 }
+
+class MethodName {
+
+  static const String moveToCenter = 'moveToCenter';
+
+  static const String onResumed = 'onResumed';
+
+  static const String onPaused = 'onPaused';
+
+}

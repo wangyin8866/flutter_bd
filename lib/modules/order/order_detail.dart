@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bd/config/config.dart';
 import 'package:flutter_bd/tools/custom_widgets.dart';
 
 class OrderDetailPage extends StatefulWidget {
@@ -10,23 +11,42 @@ class OrderDetailPage extends StatefulWidget {
   _OrderDetailPageState createState() => _OrderDetailPageState();
 }
 
-class _OrderDetailPageState extends State<OrderDetailPage> {
+class _OrderDetailPageState extends State<OrderDetailPage> with WidgetsBindingObserver {
 
   final MethodChannel _channel = const MethodChannel('bd.flutter.io/map');
   var _mapView;
 
   @override
-  void initState() { 
-    super.initState();
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
     _mapView = UiKitView(viewType: 'mapView');
+    super.initState();
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     if (Platform.isIOS) {
       _channel.invokeListMethod('mapViewWillDisappear');
     }
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    switch (state) {
+      case AppLifecycleState.inactive:// for iOS
+        break;
+      case AppLifecycleState.resumed://for Android
+        _channel.invokeListMethod(MethodName.onResumed);
+        break;
+      case AppLifecycleState.paused://for Android
+        _channel.invokeListMethod(MethodName.onPaused);
+        break;
+      case AppLifecycleState.suspending:
+        break;
+    }
   }
 
   @override
@@ -67,8 +87,17 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
 
   Widget _mapWidget() {
     return Container(
-      child: _mapView,
+      child: _whichPlatform(),
     );
+  }
+
+  Widget _whichPlatform() {
+    if (Platform.isAndroid) {
+      return AndroidView(viewType: 'com.shurenzhipin.flutter_bd.mapwidget.MapView');
+    } else if (Platform.isIOS) {
+      return _mapView;
+    }
+    return null;
   }
 
   Widget _mainWidget() {
@@ -93,7 +122,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                   size: 35,
                 ),
                 onPressed: () {
-                  _channel.invokeListMethod('moveToCenter');
+                  _channel.invokeListMethod(MethodName.moveToCenter);
                 },
               )
             ],

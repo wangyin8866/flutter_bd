@@ -7,8 +7,14 @@
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 这个权限用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 这个权限用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
-        android:name="io.flutter.app.FlutterApplication"
+        android:name=".BaseApplication"
         android:label="flutter_bd"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -31,5 +37,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".TestActivity" />
+
+        <!--百度地图-->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="vITdQeX8ZpTukVXXk07ehBaQ0IMjNGRj"/>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"/>
     </application>
 </manifest>
