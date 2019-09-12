@@ -1,6 +1,7 @@
 package com.shurenzhipin.flutter_bd.mapwidget;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -61,7 +62,7 @@ public class MapViewWidget implements PlatformView, IView {
 
             switch (methodCall.method) {
                 case ConstantChannel.moveToCenter:
-                    moveToCenter();
+                    moveToCenter(new LatLng(latitude, longitude), true);
                     break;
                     default:
                         break;
@@ -124,11 +125,33 @@ public class MapViewWidget implements PlatformView, IView {
     }
 
     @Override
-    public void moveToCenter() {
-        MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newMapStatus(new MapStatus.Builder()
-                .target(new LatLng(latitude, longitude))
-                .build());
+    public void moveToCenter(LatLng latLng, boolean defalutZoom) {
+        MapStatus mapStatus;
+        if (defalutZoom) {
+            mapStatus = new MapStatus.Builder()
+                    .target(latLng)
+                    .zoom(17.0f)
+                    .build();
+        } else {
+            mapStatus = new MapStatus.Builder()
+                    .target(latLng)
+                    .build();
+        }
+        MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mapStatus);
         mBaiduMap.setMapStatus(mapStatusUpdate);
+
+        calculateOffsetAndMove(latLng);
+    }
+
+    @Override
+    public void calculateOffsetAndMove(LatLng latLng) {
+        mMapView.postDelayed(() -> {
+            LatLng originLatLng = mBaiduMap.getProjection().fromScreenLocation(new Point(0, 0));
+            double offsetLatitude = (originLatLng.latitude - latLng.latitude) / 2;
+            LatLng ll1 = new LatLng(latLng.latitude - offsetLatitude, longitude);
+            mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(new MapStatus.Builder().target(ll1).zoom(17.0f).build()));
+
+        }, 300);
     }
 
 
@@ -160,8 +183,7 @@ public class MapViewWidget implements PlatformView, IView {
 
                 if (isFirstLoc) {
                     isFirstLoc = false;
-                    LatLng ll = new LatLng(latitude, longitude);
-                    mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(new MapStatus.Builder().target(ll).zoom(17.0f).build()));
+                    moveToCenter(new LatLng(latitude, longitude), true);
                 }
             }
         }
