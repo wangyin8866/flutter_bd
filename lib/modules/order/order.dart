@@ -43,6 +43,10 @@ class _OrderPageState extends BasePageState<OrderPage, LoginPresenter>
     mPresenter?.requestUserInfo<UserInfo>();
   }
 
+  _jumpToOrderDetail() {
+    Navigator.pushNamed(context, orderDetailRoutesName);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -300,7 +304,7 @@ class _OrderPageState extends BasePageState<OrderPage, LoginPresenter>
             ),
           ),
           onTap: () {
-            Navigator.pushNamed(context, orderDetailRoutesName);
+            _jumpToOrderDetail();
           },
         ),
         SizedBox(height: 10),
@@ -487,7 +491,7 @@ class _OrderPageState extends BasePageState<OrderPage, LoginPresenter>
             ),
           ),
           onTap: () {
-            Navigator.pushNamed(context, orderDetailRoutesName);
+            _jumpToOrderDetail();
           },
         ),
         SizedBox(height: 10),

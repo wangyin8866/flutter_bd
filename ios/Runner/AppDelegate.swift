@@ -13,8 +13,10 @@ import Flutter
     manager = BMKMapManager()
     manager?.start("xgxSvhVGdjKLZAfYt2jXcEG2msR7m5G7", generalDelegate: nil)
     BMKLocationAuth.sharedInstance()?.checkPermision(withKey: "xgxSvhVGdjKLZAfYt2jXcEG2msR7m5G7", authDelegate: nil)
-    MapViewPlugin.register(registry: self)
+    MapViewSwiftPlugin.registerWith(registry: self)
+    
     GeneratedPluginRegistrant.register(with: self)
+    
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }

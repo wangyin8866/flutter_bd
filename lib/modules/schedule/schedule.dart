@@ -214,7 +214,6 @@ class _SchedulePageState extends State<SchedulePage> {
       ),
       onTap: () {
         Navigator.pushNamed(context, scheduleDetailRoutesName);
-        print(index);
       },
     );
   }

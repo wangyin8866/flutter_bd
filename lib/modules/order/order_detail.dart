@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bd/tools/custom_widgets.dart';
@@ -11,6 +13,21 @@ class OrderDetailPage extends StatefulWidget {
 class _OrderDetailPageState extends State<OrderDetailPage> {
 
   final MethodChannel _channel = const MethodChannel('bd.flutter.io/map');
+  var _mapView;
+
+  @override
+  void initState() { 
+    super.initState();
+    _mapView = UiKitView(viewType: 'mapView');
+  }
+
+  @override
+  void dispose() {
+    if (Platform.isIOS) {
+      _channel.invokeListMethod('mapViewWillDisappear');
+    }
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +67,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
 
   Widget _mapWidget() {
     return Container(
-      child: UiKitView(viewType: 'mapView'),
+      child: _mapView,
     );
   }
 

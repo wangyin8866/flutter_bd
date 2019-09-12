@@ -10,25 +10,41 @@ import UIKit
 
 class MapView: NSObject, FlutterPlatformView {
     
-    var frame: CGRect?
-    var viewId: Int64?
-    var messager: FlutterBinaryMessenger?
-    var mapView: BMKMapView?
+    let frame: CGRect;
+    let viewId: Int64;
+    var messenger: FlutterBinaryMessenger!
+    lazy var mapView: BMKMapView = {
+        let mapView = BMKMapView(frame: frame)
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = BMKUserTrackingModeHeading
+        mapView.zoomLevel = 16
+        
+        return mapView
+    }()
     var userLocation: BMKUserLocation?
-    var locationManager: BMKLocationManager?
+    lazy var locationManager: BMKLocationManager = {
+        let locationManager = BMKLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.activityType = CLActivityType.automotiveNavigation
+        locationManager.coordinateType = .BMK09LL
+        
+        return locationManager
+    }()
     
-    init(frame: CGRect, viewID: Int64, args: Any?, binaryMessenger: FlutterBinaryMessenger) {
-        self.frame = frame
-        self.viewId = viewID
-        self.messager = binaryMessenger
-        super.init()
+    init(_ frame: CGRect,viewID: Int64,args :Any?, binaryMessenger: FlutterBinaryMessenger) {
+        self.frame = frame;
+        self.viewId = viewID;
+        self.messenger=binaryMessenger;
     }
     
     func initMethodChannel() {
-        let mapChannel = FlutterMethodChannel(name: "bd.flutter.io/map", binaryMessenger: messager!)
+        let mapChannel = FlutterMethodChannel(name: "bd.flutter.io/map", binaryMessenger: messenger)
         mapChannel.setMethodCallHandler { [weak self] (call, result) in
             if call.method == "moveToCenter" {
                 self?.updateMap()
+            } else if call.method == "mapViewWillDisappear" {
+                self?.mapViewWillDisappear()
             }
         }
     }
@@ -36,30 +52,24 @@ class MapView: NSObject, FlutterPlatformView {
     func view() -> UIView {
         initMethodChannel()
         
-        mapView = BMKMapView(frame: frame ?? .zero)
-        mapView?.showsUserLocation = true
-        mapView?.userTrackingMode = BMKUserTrackingModeHeading
-        mapView?.zoomLevel = 16
+        locationManager.startUpdatingLocation()
+        locationManager.startUpdatingHeading()
         
-        locationManager = BMKLocationManager()
-        locationManager?.delegate = self
-        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager?.activityType = CLActivityType.automotiveNavigation
-        locationManager?.coordinateType = .BMK09LL
-        locationManager?.startUpdatingLocation()
-        locationManager?.startUpdatingHeading()
-        
-        return mapView!
+        return mapView
+    }
+    
+    func mapViewWillDisappear() {
+        mapView.viewWillDisappear()
     }
     
     func updateMap() {
-        mapView?.updateLocationData(userLocation)
-        mapView?.setMapCenterToScreenPt(CGPoint(x: mapView?.center.x ?? 0, y: (mapView?.center.y ?? 0) - 150))
-        mapView?.zoomLevel = 16
+        mapView.updateLocationData(userLocation)
+        mapView.setMapCenterToScreenPt(CGPoint(x: mapView.center.x, y: (mapView.center.y) - 150))
+        mapView.zoomLevel = 16
         if userLocation?.location == nil {
             return
         }
-        mapView?.setCenter(userLocation?.location.coordinate ?? CLLocationCoordinate2DMake(0, 0), animated: true)
+        mapView.setCenter(userLocation?.location.coordinate ?? CLLocationCoordinate2DMake(0, 0), animated: true)
     }
     
 }
@@ -70,12 +80,12 @@ extension MapView: BMKLocationManagerDelegate {
         if location == nil {
             return
         }
-        locationManager?.stopUpdatingLocation()
+        locationManager.stopUpdatingLocation()
         if userLocation == nil {
             userLocation = BMKUserLocation()
         }
         userLocation?.location = location?.location
-        mapView?.updateLocationData(userLocation)
+        mapView.updateLocationData(userLocation)
         updateMap()
     }
     
@@ -84,37 +94,33 @@ extension MapView: BMKLocationManagerDelegate {
             userLocation = BMKUserLocation()
         }
         userLocation?.heading = heading
-        mapView?.updateLocationData(userLocation)
+        mapView.updateLocationData(userLocation)
     }
     
 }
 
 class MapViewFactory: NSObject, FlutterPlatformViewFactory {
     
-    var messager: FlutterBinaryMessenger?
+    var messenger: FlutterBinaryMessenger!
     
-    init(registry: FlutterBinaryMessenger) {
-        self.messager = registry
+    @objc public init(messenger: (NSObject & FlutterBinaryMessenger)?) {
         super.init()
+        self.messenger = messenger
     }
     
     func create(withFrame frame: CGRect, viewIdentifier viewId: Int64, arguments args: Any?) -> FlutterPlatformView {
-        return MapView(frame: frame, viewID: viewId, args: args, binaryMessenger: messager!)
+        return MapView(frame, viewID: viewId, args: args, binaryMessenger: messenger)
     }
     
 }
 
 
-class MapViewPlugin: NSObject {
-    
-    static func register(registry: FlutterPluginRegistry) {
-        let pluginKey = "mapViewPlugin"
-        if registry.hasPlugin(pluginKey) {
-            return
-        }
-        let registrar = registry.registrar(forPlugin: pluginKey)
-        let messenger = registrar.messenger()
-        registrar.register(MapViewFactory(registry: messenger), withId: "mapView")
+class MapViewSwiftPlugin: NSObject {
+    static func registerWith(registry:FlutterPluginRegistry) {
+        let pluginKey = "mapViewPlugin";
+        if (registry.hasPlugin(pluginKey)) {return};
+        let registrar = registry.registrar(forPlugin: pluginKey);
+        let messenger = registrar.messenger() as! (NSObject & FlutterBinaryMessenger)
+        registrar.register(MapViewFactory(messenger:messenger),withId: "mapView");
     }
-    
 }
