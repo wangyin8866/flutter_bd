@@ -25,7 +25,7 @@ class _OrderPageState extends BasePageState<OrderPage, LoginPresenter>
     _tabController.addListener(() {
       print(_tabController.index);
     });
-    
+
     _getUserInfo();
   }
 
@@ -45,6 +45,26 @@ class _OrderPageState extends BasePageState<OrderPage, LoginPresenter>
 
   _jumpToOrderDetail() {
     Navigator.pushNamed(context, orderDetailRoutesName);
+  }
+
+  _confirmList() {
+    return ListView.builder(
+      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+      itemCount: 9,
+      itemBuilder: (context, index) {
+        return confirmCell(index);
+      },
+    );
+  }
+
+  _interviewList() {
+    return ListView.builder(
+      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+      itemCount: 9,
+      itemBuilder: (context, index) {
+        return interviewCell(index);
+      },
+    );
   }
 
   @override
@@ -119,20 +139,8 @@ class _OrderPageState extends BasePageState<OrderPage, LoginPresenter>
               child: TabBarView(
                 controller: _tabController,
                 children: <Widget>[
-                  ListView.builder(
-                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    itemCount: 9,
-                    itemBuilder: (context, index) {
-                      return confirmCell(index);
-                    },
-                  ),
-                  ListView.builder(
-                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    itemCount: 9,
-                    itemBuilder: (context, index) {
-                      return interviewCell(index);
-                    },
-                  ),
+                  _confirmList(),
+                  _interviewList(),
                 ],
               ),
             ),
