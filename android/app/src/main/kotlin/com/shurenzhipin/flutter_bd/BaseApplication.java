@@ -1,10 +1,20 @@
 package com.shurenzhipin.flutter_bd;
 
+import android.content.Context;
+import android.support.multidex.MultiDex;
+
 import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
 
-public class BaseApplication extends io.flutter.app.FlutterApplication {
+import io.flutter.app.FlutterApplication;
 
+public class BaseApplication extends FlutterApplication {
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
 
     @Override
     public void onCreate() {

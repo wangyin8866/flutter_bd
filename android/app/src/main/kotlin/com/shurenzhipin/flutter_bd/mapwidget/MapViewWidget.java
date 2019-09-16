@@ -1,11 +1,11 @@
 package com.shurenzhipin.flutter_bd.mapwidget;
 
 import android.content.Context;
-import android.graphics.Point;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.baidu.location.BDAbstractLocationListener;
@@ -39,6 +39,7 @@ import io.flutter.plugin.platform.PlatformView;
 
 public class MapViewWidget implements PlatformView, IView {
 
+    private View view;
     private MapView mMapView;
     private BaiduMap mBaiduMap;
     private LocationClient mLocationClient;
@@ -79,7 +80,8 @@ public class MapViewWidget implements PlatformView, IView {
 
     public MapViewWidget(Context context, BinaryMessenger messenger, int id, Map<String, Object> params) {
         if (null == mMapView) {
-            mMapView = new MapView(context);
+            view = LayoutInflater.from(context).inflate(R.layout.layout_mapview, null);
+            mMapView = view.findViewById(R.id.mapView);
         }
 
         if (null == mBaiduMap) {
@@ -110,7 +112,7 @@ public class MapViewWidget implements PlatformView, IView {
 
     @Override
     public View getView() {
-        return mMapView;
+        return view;
     }
 
     @Override
@@ -169,19 +171,19 @@ public class MapViewWidget implements PlatformView, IView {
         MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mapStatus);
         mBaiduMap.setMapStatus(mapStatusUpdate);
 
-        calculateOffsetAndMove(latLng);
+//        calculateOffsetAndMove(latLng);
     }
 
-    @Override
-    public void calculateOffsetAndMove(LatLng latLng) {
-        mMapView.postDelayed(() -> {
-            LatLng originLatLng = mBaiduMap.getProjection().fromScreenLocation(new Point(0, 0));
-            double offsetLatitude = (originLatLng.latitude - latLng.latitude) / 2;
-            LatLng ll1 = new LatLng(latLng.latitude - offsetLatitude, longitude);
-            mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(new MapStatus.Builder().target(ll1).zoom(17.0f).build()));
-
-        }, 300);
-    }
+//    @Override
+//    public void calculateOffsetAndMove(LatLng latLng) {
+//        mMapView.postDelayed(() -> {
+//            LatLng originLatLng = mBaiduMap.getProjection().fromScreenLocation(new Point(0, 0));
+//            double offsetLatitude = (originLatLng.latitude - latLng.latitude) / 2;
+//            LatLng ll1 = new LatLng(latLng.latitude - offsetLatitude, longitude);
+//            mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(new MapStatus.Builder().target(ll1).zoom(17.0f).build()));
+//
+//        }, 300);
+//    }
 
 
     private class LocationListenerImpl extends BDAbstractLocationListener {

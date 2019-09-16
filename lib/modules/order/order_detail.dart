@@ -19,7 +19,11 @@ class _OrderDetailPageState extends State<OrderDetailPage> with WidgetsBindingOb
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
-    _mapView = UiKitView(viewType: 'mapView');
+    if (Platform.isAndroid) {
+      _mapView = AndroidView(viewType: 'com.shurenzhipin.flutter_bd.mapwidget.MapView');
+    } else if (Platform.isIOS) {
+      _mapView = UiKitView(viewType: 'mapView');
+    }
     super.initState();
   }
 
@@ -92,12 +96,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> with WidgetsBindingOb
   }
 
   Widget _whichPlatform() {
-    if (Platform.isAndroid) {
-      return AndroidView(viewType: 'com.shurenzhipin.flutter_bd.mapwidget.MapView');
-    } else if (Platform.isIOS) {
-      return _mapView;
-    }
-    return null;
+    return _mapView;
   }
 
   Widget _mainWidget() {

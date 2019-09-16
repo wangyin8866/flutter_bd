@@ -18,6 +18,6 @@ public interface IView {
 
     void moveToCenter(LatLng latLng, boolean defalutZoom);
 
-    void calculateOffsetAndMove(LatLng latLng);
+//    void calculateOffsetAndMove(LatLng latLng);
 
 }
