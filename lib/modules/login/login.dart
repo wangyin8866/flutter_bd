@@ -43,12 +43,12 @@ class _LoginPageState extends BasePageState<LoginPage, LoginPresenter> {
   }
 
   _login() {
-//    mPresenter?.requestLogin<UserLoginInfo>(_userName, _password);
-    Navigator.pushNamed(context, orderDetailRoutesName);
+    mPresenter?.requestLogin<UserLoginInfo>(_userName, _password);
+//    Navigator.pushNamed(context, orderDetailRoutesName);
   }
 
   _checkValid() {
-    var isValid = (_userName.length >0) && (_password.length >0);
+    var isValid = (_userName.length == 11) && (_password.length == 6);
     if (isValid) {
       _click = () {
         FocusScope.of(context).requestFocus(FocusNode());
