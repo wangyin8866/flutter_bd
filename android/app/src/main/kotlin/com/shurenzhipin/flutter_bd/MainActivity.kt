@@ -17,7 +17,6 @@ class MainActivity: FlutterFragmentActivity() {
 
     ForMapPlugin.registerWith(this)
 
-
     ApplyPermissionsUtils.instance.requestPermissions("Location", this, {
 
     }, Manifest.permission.ACCESS_FINE_LOCATION,
