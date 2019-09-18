@@ -1,0 +1,127 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+
+        multiDexEnabled true
+
+    }
+    lintOptions {
+        abortOnError false
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        forTest {}
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    //support
+    api 'com.google.android.material:material:1.0.0'
+    api 'androidx.recyclerview:recyclerview:1.0.0'
+    api 'androidx.cardview:cardview:1.0.0'
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
+    api 'androidx.appcompat:appcompat:1.0.2'
+
+    api 'com.noober.background:core:1.2.0'
+
+    api 'androidx.multidex:multidex:2.0.1'
+
+    //RxBinding
+    api 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.1.1'
+    api 'com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:2.1.1'
+    api 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:2.1.1'
+    api 'com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:2.1.1'
+
+    //retrofit
+//    api 'com.squareup.retrofit2:converter-scalars:2.4.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+//    api 'com.squareup.retrofit2:converter-moshi:2.1.0'
+//    api 'com.squareup.moshi:moshi-kotlin:1.5.0'
+
+    api 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    //rxJava
+    api 'io.reactivex.rxjava2:rxjava:2.1.16'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    api 'io.reactivex.rxjava2:rxkotlin:2.0.0'
+    api 'me.yokeyword:fragmentation:1.3.3'
+    api 'com.trello.rxlifecycle2:rxlifecycle:2.2.1'
+    api 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
+    api 'com.blankj:utilcode:1.19.0'
+    //common
+    api 'jp.wasabeef:glide-transformations:3.3.0'
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+    api 'com.youth.banner:banner:1.4.10'
+    api 'com.just.agentweb:agentweb:4.0.2'
+    api 'me.jessyan:autosize:0.9.1'
+    api 'com.github.tbruyelle:rxpermissions:0.10.2'
+    api 'com.contrarywind:Android-PickerView:4.1.6'
+    api 'com.github.zyyoona7:EasyPopup:1.0.1'
+    api 'com.github.chrisbanes:PhotoView:2.0.0'
+
+    //zxing
+    api 'com.google.zxing:core:3.3.0'
+
+    //flowlayout
+    api 'com.hyman:flowlayout-lib:1.1.2'
+
+    api 'com.alibaba:arouter-api:1.4.0'
+
+    //RefreshLayout
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
+
+    //takephoto
+    api('com.jph.takephoto:takephoto_library:4.0.3') {
+        exclude group: 'com.github.bumptech.glide'
+    }
+    //jpush
+//    api 'cn.jiguang.sdk:jpush:3.1.8'
+//    // 此处以JPush 3.1.6 版本为例。
+//    api 'cn.jiguang.sdk:jcore:1.2.6'
+//     此处以JCore 1.2.5 版本为例。
+
+//    api 'com.yanzhenjie:permission:1.1.2'//?
+
+    //bugly
+    api 'com.tencent.bugly:crashreport:2.6.6.1'
+    api 'com.tencent.bugly:nativecrashreport:3.3.1'
+
+    //umeng
+    api 'com.umeng.analytics:analytics:6.1.4'
+    //lottie
+    api 'com.airbnb.android:lottie:2.5.1'
+    api 'q.rorbin:badgeview:1.1.3'
+    api files('libs/umeng-common-1.5.4.jar')
+    api files('libs/umeng-share-core-6.9.3.jar')
+    api files('libs/umeng-share-QQ-simplify-6.9.3.jar')
+    api files('libs/umeng-share-sina-simplify-6.9.3.jar')
+    api files('libs/umeng-share-wechat-simplify-6.9.3.jar')
+    api files('libs/umeng-sharetool-6.9.3.jar')
+    api 'com.github.ome450901:SimpleRatingBar:1.4.2'
+    api 'io.sentry:sentry-android:1.7.5'
+}

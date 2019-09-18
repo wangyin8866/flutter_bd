@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Library_kotlin</string>
+    <string name="tip_not_net">当前网络不可用，请检查网络情况！</string>
+</resources>

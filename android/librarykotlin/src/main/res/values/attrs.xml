@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<declare-styleable name="CustomTheme">
+		<attr name="gifViewStyle"
+		      format="reference"/>
+	</declare-styleable>
+	
+	<declare-styleable name="GifWidget">
+		<attr name="gifs"
+		      format="reference"/>
+		<attr name="pauseds"
+		      format="boolean"/>
+	</declare-styleable>
+	
+	<declare-styleable name="RectCircleImageView">
+		<attr name="rect_type"
+		      format="enum">
+			<enum name="circle"
+			      value="0"/>
+			<enum name="round"
+			      value="1"/>
+		</attr>
+		<attr name="rect_round_Radius"
+		      format="dimension"/>
+		<attr name="rect_border_width"
+		      format="dimension"/>
+		<attr name="rect_border_color"
+		      format="color"/>
+	</declare-styleable>
+	
+	<declare-styleable name="XTabLayout">
+		<attr name="xTabIndicatorHeight"
+		      format="dimension"/>
+		<attr name="xTabIndicatorWidth"
+		      format="dimension"/>
+		<attr name="xTabIndicatorColor"
+		      format="color"/>
+		<attr name="xTabPadding"
+		      format="dimension"/>
+		<attr name="xTabPaddingStart"
+		      format="dimension"/>
+		<attr name="xTabPaddingTop"
+		      format="dimension"/>
+		<attr name="xTabPaddingEnd"
+		      format="dimension"/>
+		<attr name="xTabPaddingBottom"
+		      format="dimension"/>
+		<attr name="xTabTextAppearance"
+		      format="reference"/>
+		<attr name="xTabTextColor"
+		      format="color"/>
+		<attr name="xTabSelectedTextColor"
+		      format="color"/>
+		<attr name="xTabMinWidth"
+		      format="dimension"/>
+		<attr name="xTabMaxWidth"
+		      format="dimension"/>
+		<attr name="xTabBackgroundColor"
+		      format="reference|color"/>
+		<attr name="xTabIndicatorCornerRadius"
+		      format="dimension"/>
+		<attr name="xTabSelectedBackgroundColor"
+		      format="reference|color"/>
+		<attr name="xTabContentStart"
+		      format="dimension"/>
+		<attr name="xTabMode">
+			<enum name="scrollable"
+			      value="0x00000000"/>
+			<enum name="fixed"
+			      value="0x00000001"/>
+		</attr>
+		<attr name="xTabGravity"
+		      format="integer"/>
+		<attr name="xTabTextSize"
+		      format="dimension"/>
+		<attr name="xTabTextBold"
+		      format="boolean"/>
+		<attr name="xTabSelectedTextSize"
+		      format="dimension"/>
+		<attr name="xTabTextSelectedBold"
+		      format="boolean"/>
+		<attr name="xTabDisplayNum"
+		      format="integer"/>
+		<attr name="xTabTextAllCaps"
+		      format="boolean"/>
+		<attr name="xTabDividerHeight"
+		      format="dimension"/>
+		<attr name="xTabDividerWidth"
+		      format="dimension"/>
+		<attr name="xTabDividerWidthWidthText"
+		      format="boolean"/>
+		<attr name="xTabDividerColor"
+		      format="color"/>
+		<attr name="xTabDividerGravity">
+			<enum name="top"
+			      value="0x00000000"/>
+			<enum name="center"
+			      value="0x00000001"/>
+			<enum name="bottom"
+			      value="0x00000002"/>
+		</attr>
+	</declare-styleable>
+	
+	<declare-styleable name="FunctionEditText">
+		<attr name="clearIcon"
+		      format="reference"></attr>
+		<attr name="cursorColor"
+		      format="reference"></attr>
+		<attr name="isShowPhoneFormat"
+		      format="boolean"></attr>
+		<attr name="isShowBankCardFormat"
+		      format="boolean"></attr>
+	</declare-styleable>
+	<declare-styleable name="TopBar">
+		<attr name="top_background"
+		      format="reference|color"/>
+		<attr name="title"
+		      format="string"/>
+		<attr name="titleTextSize"
+		      format="dimension"/>
+		<attr name="titleTextColor"
+		      format="color"/>
+		<attr name="drawableLeftVisibility"
+		      format="boolean"/>
+		<attr name="drawableLeft"
+		      format="reference|color"/>
+		<attr name="leftTextColor"
+		      format="color"/>
+		<attr name="leftBackground"
+		      format="reference|color"/>
+		<attr name="leftText"
+		      format="string"/>
+		<attr name="leftTextSize"
+		      format="dimension"/>
+		<attr name="drawableRightVisibility"
+		      format="boolean"/>
+		<attr name="drawableRight"
+		      format="reference|color"/>
+		<attr name="rightTextColor"
+		      format="color"/>
+		<attr name="rightBackground"
+		      format="reference|color"/>
+		<attr name="rightText"
+		      format="string"/>
+		<attr name="rightTextSize"
+		      format="dimension"/>
+		<attr name="paddingLeft"
+		      format="dimension"/>
+		<attr name="paddingRight"
+		      format="dimension"/>
+	</declare-styleable>
+
+	<declare-styleable name="RangeSeekBar">
+		<attr name="max" format="float"/>
+		<attr name="min" format="float"/>
+		<attr name="reserve" format="float"/>
+		<attr name="cells" format="integer"/>
+		<attr name="lineColorSelected" format="color"/>
+		<attr name="lineColorEdge" format="color"/>
+		<attr name="seekBarResId" format="reference"/>
+	</declare-styleable>
+</resources>

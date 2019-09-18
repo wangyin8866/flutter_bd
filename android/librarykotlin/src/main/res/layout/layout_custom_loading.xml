@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cpd_root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <!--<ProgressBar-->
+    <!--android:id="@+id/progressBar"-->
+    <!--style="@android:style/Widget.ProgressBar"-->
+    <!--android:layout_width="36dp"-->
+    <!--android:layout_height="36dp" />-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/iv_progress"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:visibility="gone" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_progress"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_marginTop="13dp"-->
+    <!--android:text="加载中..."-->
+    <!--android:textColor="#fff"-->
+    <!--android:textSize="13sp"-->
+    <!--android:visibility="gone" />-->
+
+    <!--<com.koubeigongzuo.library.widget.views.GifView-->
+    <!--android:layout_width="70dp"-->
+    <!--android:layout_height="70dp"-->
+    <!--custom:gifs="@drawable/loading" />-->
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="data.json"
+        app:lottie_loop="true" />
+</LinearLayout>

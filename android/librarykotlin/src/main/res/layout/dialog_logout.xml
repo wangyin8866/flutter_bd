@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center">
+	
+	<LinearLayout
+			android:layout_width="274dp"
+			android:layout_height="wrap_content"
+			android:background="@drawable/dialog_shape_4dp"
+			android:gravity="center"
+			android:orientation="vertical">
+		
+		<TextView
+				android:id="@+id/dialog_logout_title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="18dp"
+				android:text="账号登出提示"
+				android:textColor="#ff0f0f0f"
+				android:textSize="19sp"/>
+		
+		
+		<TextView
+				android:id="@+id/dialog_logout_content"
+				android:layout_width="213dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="25dp"
+				android:text="您的账号于2018-10-02 19:23:14在另一台设备登录，若非您本人操作，则账号可能存在安全风险，请及时拨打客服电话400-833-6993"
+				android:textColor="#ffb7b7b7"
+				android:textSize="14sp"/>
+		
+		<TextView
+				android:id="@+id/dialog_logout_but"
+				android:layout_width="202dp"
+				android:layout_height="39dp"
+				android:layout_marginBottom="20dp"
+				android:layout_marginTop="22dp"
+				android:background="@drawable/btn_common_gradient"
+				android:gravity="center"
+				android:text="重新登录"
+				android:textColor="#ffffffff"
+				android:textSize="15sp"/>
+	
+	
+	</LinearLayout>
+</FrameLayout>

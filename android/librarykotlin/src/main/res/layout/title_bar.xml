@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/titleRoot"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/tool_bar_height">
+
+    <TextView
+        android:id="@+id/titleName"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:singleLine="true"
+        tools:text="title"
+        android:textSize="18sp"
+        android:textColor="@color/color_4A4C5B"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/titleBack"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textSize="15sp"
+        android:paddingLeft="15dp"
+        android:drawableLeft="@drawable/but_back_nav"
+        android:paddingRight="10dp"
+        android:gravity="center" />
+
+
+
+    <TextView
+        android:id="@+id/titleRight1"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textSize="15sp"
+        android:visibility="gone"
+        android:textColor="@color/color_4A4C5B"
+        android:paddingRight="15dp"
+        android:gravity="center" />
+
+    <ImageView
+        android:id="@+id/imageRight2"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textSize="15sp"
+        android:paddingRight="15dp"
+        android:gravity="center" />
+
+
+
+</RelativeLayout>
