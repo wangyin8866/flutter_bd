@@ -26,9 +26,9 @@ void main() {
 
 Future init() async {
   if (bool.fromEnvironment("dart.vm.product")) {
-    RongcloudImPlugin.init("bmdehs6pbgrbs");
-  }else {
     RongcloudImPlugin.init("pkfcgjstpzop8");
+  }else {
+    RongcloudImPlugin.init("bmdehs6pbgrbs");
   }
 
 }
