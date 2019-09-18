@@ -1,8 +1,8 @@
 package com.xinrenlei.koubeigongzuobd.utils
 
 import android.annotation.SuppressLint
-import android.support.v4.app.FragmentActivity
 import com.tbruyelle.rxpermissions2.RxPermissions
+import com.xinrenlei.koubeigongzuobd.MainActivity
 import io.reactivex.disposables.CompositeDisposable
 
 /**
@@ -24,7 +24,7 @@ class ApplyPermissionsUtils {
     @SuppressLint("CheckResult")
     fun requestPermissions(
             tag: String,
-            fragmentActivity: FragmentActivity,
+            fragmentActivity: MainActivity,
             onNext: ((t: Boolean) -> Unit),
             vararg permissions: String
     ) {

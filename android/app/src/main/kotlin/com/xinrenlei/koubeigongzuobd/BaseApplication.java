@@ -1,7 +1,7 @@
 package com.xinrenlei.koubeigongzuobd;
 
 import android.content.Context;
-import android.support.multidex.MultiDex;
+import androidx.multidex.MultiDex;
 
 import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;

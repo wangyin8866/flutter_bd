@@ -20,7 +20,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> with WidgetsBindingOb
   void initState() {
     WidgetsBinding.instance.addObserver(this);
     if (Platform.isAndroid) {
-      _mapView = AndroidView(viewType: 'com.shurenzhipin.flutter_bd.mapwidget.MapView');
+      _mapView = AndroidView(viewType: 'com.xinrenlei.koubeigongzuobd.mapwidget.MapView');
     } else if (Platform.isIOS) {
       _mapView = UiKitView(viewType: 'mapView');
     }
