@@ -25,10 +25,12 @@ void main() {
 }
 
 Future init() async {
-  RongcloudImPlugin.init("bmdehs6pbgrbs");
-  int rc = await RongcloudImPlugin.connect(RongIMToken);
-  print('connect result');
-  print(rc);
+  if (bool.fromEnvironment("dart.vm.product")) {
+    RongcloudImPlugin.init("bmdehs6pbgrbs");
+  }else {
+    RongcloudImPlugin.init("pkfcgjstpzop8");
+  }
+
 }
 
 class MyApp extends StatelessWidget {

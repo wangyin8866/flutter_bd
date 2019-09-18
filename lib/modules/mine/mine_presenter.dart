@@ -7,4 +7,9 @@ class MinePresenter extends BasePresenter {
     invoke<T>(UrlPath.get_account,
         method: NetConstant.GET, isShowLoading: false);
   }
+
+  requestRong<T>(){
+    invoke<T>(UrlPath.get_account,
+        method: NetConstant.GET, isShowLoading: false);
+  }
 }

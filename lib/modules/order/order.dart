@@ -5,6 +5,7 @@ import 'package:flutter_bd/modules/base/base_state_page.dart';
 import 'package:flutter_bd/modules/login/login_presenter.dart';
 import 'package:flutter_bd/server/routes.dart';
 import 'package:flutter_bd/tools/singleton.dart';
+import 'package:rongcloud_im_plugin/rongcloud_im_plugin.dart';
 
 class OrderPage extends StatefulWidget {
   OrderPage({Key key}) : super(key: key);
@@ -30,9 +31,14 @@ class _OrderPageState extends BasePageState<OrderPage, LoginPresenter>
   }
 
   @override
-  void showSuccess(BaseBean response) {
+  Future showSuccess(BaseBean response) async {
     if (response is UserInfo) {
       SingletonManager().userInfo = response;
+
+      int rc = await RongcloudImPlugin.connect(
+          SingletonManager().userInfo.data.imToken);
+      print('connect result');
+      print(rc);
       setState(() {
         _name = SingletonManager().userInfo.data.name;
       });
