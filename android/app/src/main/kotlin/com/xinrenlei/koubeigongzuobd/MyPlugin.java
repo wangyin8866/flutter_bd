@@ -1,4 +1,4 @@
-package com.shurenzhipin.flutter_bd;
+package com.xinrenlei.koubeigongzuobd;
 
 import android.content.Intent;
 
@@ -13,7 +13,7 @@ import io.flutter.plugin.common.MethodChannel;
  */
 public class MyPlugin {
     public static void registerWith(final BinaryMessenger messenger, FlutterFragmentActivity activity) {
-        new MethodChannel(messenger, "com.shurenzhipin.flutter_bd/flutter_plugin").setMethodCallHandler((methodCall, result) -> {
+        new MethodChannel(messenger, "com.xinrenlei.koubeigongzuobd/flutter_plugin").setMethodCallHandler((methodCall, result) -> {
 
             // 解析参数，做页面跳转
             if ("openNative".equals(methodCall.method)) {

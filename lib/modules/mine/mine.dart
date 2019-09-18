@@ -29,25 +29,33 @@ class _MinePageState extends BasePageState<MinePage, MinePresenter> {
 
   double _statusHeight = 0;
 
+  String _money;
+
   @override
   void showSuccess(BaseBean response) {
     super.showSuccess(response);
     if (response is AccountBean) {
-      showToast(response.msg);
+
+      setState(() {
+        _money = response.data.balance;
+
+      });
     }
   }
 
   @override
   void initState() {
     super.initState();
-    print("mine");
 
     mPresenter.requestAccount<AccountBean>();
   }
 
   @override
   Widget build(BuildContext context) {
-    _statusHeight =  MediaQuery.of(context).padding.top;
+    _statusHeight = MediaQuery
+        .of(context)
+        .padding
+        .top;
     return Scaffold(
       body: SafeArea(
           top: false,
@@ -185,7 +193,7 @@ class _MinePageState extends BasePageState<MinePage, MinePresenter> {
                                           fontWeight: FontWeight.w500),
                                     ),
                                     Text(
-                                      "¥500.00",
+                                      "¥$_money",
                                       style: TextStyle(
                                           color: Color(0xFFD61A1A),
                                           fontSize: 11,
@@ -200,12 +208,12 @@ class _MinePageState extends BasePageState<MinePage, MinePresenter> {
                                       children: <Widget>[
                                         Positioned(
                                             child: Text(
-                                          ">",
-                                          style: TextStyle(
-                                              color: Color(0xFFD61A1A),
-                                              fontSize: 11,
-                                              fontWeight: FontWeight.w500),
-                                        ))
+                                              ">",
+                                              style: TextStyle(
+                                                  color: Color(0xFFD61A1A),
+                                                  fontSize: 11,
+                                                  fontWeight: FontWeight.w500),
+                                            ))
                                       ],
                                     ))
                               ],
@@ -354,7 +362,7 @@ class _MinePageState extends BasePageState<MinePage, MinePresenter> {
                       child: Text(
                         ">",
                         style:
-                            TextStyle(color: Color(0xFF5D5D5D), fontSize: 12),
+                        TextStyle(color: Color(0xFF5D5D5D), fontSize: 12),
                       ),
                     )
                   ],

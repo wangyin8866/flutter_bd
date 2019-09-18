@@ -1,4 +1,4 @@
-package com.shurenzhipin.flutter_bd.mapwidget;
+package com.xinrenlei.koubeigongzuobd.mapwidget;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -23,7 +23,7 @@ import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 import com.blankj.utilcode.util.LogUtils;
-import com.shurenzhipin.flutter_bd.R;
+import com.xinrenlei.koubeigongzuobd.R;
 
 import java.util.Map;
 

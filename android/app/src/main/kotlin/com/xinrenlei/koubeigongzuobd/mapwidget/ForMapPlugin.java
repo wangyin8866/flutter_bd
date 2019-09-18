@@ -1,4 +1,4 @@
-package com.shurenzhipin.flutter_bd.mapwidget;
+package com.xinrenlei.koubeigongzuobd.mapwidget;
 
 import io.flutter.plugin.common.PluginRegistry;
 
@@ -17,7 +17,7 @@ public class ForMapPlugin {
         //初始化 PluginRegistry
         PluginRegistry.Registrar registrar = registry.registrarFor(key);
         //设置标识
-        registrar.platformViewRegistry().registerViewFactory("com.shurenzhipin.flutter_bd.mapwidget.MapView", new MapViewFactory(registrar.messenger(), registrar.activity()));
+        registrar.platformViewRegistry().registerViewFactory("com.xinrenlei.koubeigongzuobd.mapwidget.MapView", new MapViewFactory(registrar.messenger(), registrar.activity()));
     }
 
 }

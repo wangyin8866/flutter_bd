@@ -1,4 +1,4 @@
-package com.shurenzhipin.flutter_bd.mapwidget;
+package com.xinrenlei.koubeigongzuobd.mapwidget;
 
 import android.app.Activity;
 import android.content.Context;

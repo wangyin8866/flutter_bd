@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.shurenzhipin.flutter_bd">
+    package="com.xinrenlei.koubeigongzuobd">
 
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
@@ -14,11 +14,11 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
-        android:name=".BaseApplication"
+        android:name="com.xinrenlei.koubeigongzuobd.BaseApplication"
         android:label="flutter_bd"
         android:icon="@mipmap/ic_launcher">
         <activity
-            android:name=".MainActivity"
+            android:name="com.xinrenlei.koubeigongzuobd.MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -36,7 +36,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".TestActivity" />
+        <activity android:name="com.xinrenlei.koubeigongzuobd.TestActivity" />
 
         <!--百度地图-->
         <meta-data

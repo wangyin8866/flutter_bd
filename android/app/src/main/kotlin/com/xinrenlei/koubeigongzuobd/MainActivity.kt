@@ -1,9 +1,9 @@
-package com.shurenzhipin.flutter_bd
+package com.xinrenlei.koubeigongzuobd
 
 import android.Manifest
 import android.os.Bundle
-import com.shurenzhipin.flutter_bd.mapwidget.ForMapPlugin
-import com.shurenzhipin.flutter_bd.utils.ApplyPermissionsUtils
+import com.xinrenlei.koubeigongzuobd.mapwidget.ForMapPlugin
+import com.xinrenlei.koubeigongzuobd.utils.ApplyPermissionsUtils
 import io.flutter.app.FlutterFragmentActivity
 import io.flutter.plugins.GeneratedPluginRegistrant
 

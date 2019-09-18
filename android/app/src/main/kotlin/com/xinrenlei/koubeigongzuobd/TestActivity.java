@@ -1,4 +1,4 @@
-package com.shurenzhipin.flutter_bd;
+package com.xinrenlei.koubeigongzuobd;
 
 import android.os.Bundle;
 import android.util.Log;

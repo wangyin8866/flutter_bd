@@ -1,4 +1,4 @@
-package com.shurenzhipin.flutter_bd.utils
+package com.xinrenlei.koubeigongzuobd.utils
 
 import android.annotation.SuppressLint
 import android.support.v4.app.FragmentActivity
